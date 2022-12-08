@@ -53,6 +53,6 @@ export type VantaClouds = {
 };
 
 export type VantaCloudsObject = {
-  CLOUDS: (settings: VantaCloudsSettings) => VantaClouds;
+  WAVES: (settings: VantaCloudsSettings) => VantaClouds;
   current: VantaClouds;
 };
