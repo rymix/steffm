@@ -66,4 +66,5 @@ Dustin live-coded this over a year's worth of live streams. You can check out hi
 
 ![Stars](https://badgen.net/github/stars/DustinBrett/x)
 ![License](https://badgen.net/github/license/DustinBrett/x)
-![GitHub](https://github.com/DustinBrett/daedalOS#readme)
+
+[https://github.com/DustinBrett/daedalOS#readme](https://github.com/DustinBrett/daedalOS#readme)
