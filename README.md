@@ -1,9 +1,9 @@
-## 🎶 **Stef.fmdaedalOS** 🎶
+## 🎶 **Stef.fm** 🎶
 
 ### _Music streaming service in a desktop environment in the browser_
 
-![Stars](https://badgen.net/github/stars/rymix/x)
-![License](https://badgen.net/github/license/rymix/x)
+![Stars](https://badgen.net/github/stars/rymix/steffm)
+![License](https://badgen.net/github/license/rymix/steffm)
 
 Stef.fm is an online music streaming platform which I am using as a permanent home for my late friend's amazing house music mix collection. I explain more in my [LinkedIn article](https://www.linkedin.com/pulse/passion-project-digital-preservation-archaeology-steve-arnott/).
 
@@ -58,7 +58,7 @@ docker build -t steffm .
 docker run -dp 3001:3001 --rm --name steffm steffm
 ```
 
-### DaedalOS - Desktop environment in the browser 🧠
+### DaedalOS - Desktop environment in the browser 👌
 
 Stef.fm is based on Based on Dustin Brett's DaedalOS - a desktop environment in the browser. An amazing recreation of a typical PC desktop experience. It has many features which make this both impressive and pleasurable to use. I won't repeat everything here. Instead, head over to his repo and send him some love.
 
