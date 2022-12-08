@@ -1,13 +1,13 @@
-import type { VantaWavesConfig } from "components/system/Desktop/Wallpapers/vantaWaves/types";
+import type { VantaCloudsConfig } from "components/system/Desktop/Wallpapers/vantaClouds/types";
 
-export const config: VantaWavesConfig = {
+export const config: VantaCloudsConfig = {
   camera: {
     far: 400,
     fov: 30,
     near: 0.1,
   },
   color: "hsl(225, 40%, 20%)",
-  colorCycleSpeed: 1,
+  colorCycleSpeed: 10,
   forceAnimate: true,
   hh: 50,
   hue: 225,

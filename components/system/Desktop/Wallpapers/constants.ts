@@ -20,7 +20,8 @@ export const WALLPAPER_PATHS: Record<
     import("components/system/Desktop/Wallpapers/ShaderToy/CoastalLandscape"),
   HEXELLS: () => import("components/system/Desktop/Wallpapers/hexells"),
   MATRIX: () => import("components/system/Desktop/Wallpapers/Matrix"),
-  VANTA: () => import("components/system/Desktop/Wallpapers/vantaWaves"),
+  VANTACLOUDS: () => import("components/system/Desktop/Wallpapers/vantaClouds"),
+  VANTAWAVES: () => import("components/system/Desktop/Wallpapers/vantaWaves"),
 };
 
 export const WALLPAPER_WORKERS: Record<string, (info?: string) => Worker> = {
@@ -40,7 +41,15 @@ export const WALLPAPER_WORKERS: Record<string, (info?: string) => Worker> = {
       ),
       { name: "Wallpaper (Hexells)" }
     ),
-  VANTA: (info?: string): Worker =>
+  VANTACLOUDS: (info?: string): Worker =>
+    new Worker(
+      new URL(
+        "components/system/Desktop/Wallpapers/vantaClouds/wallpaper.worker",
+        import.meta.url
+      ),
+      { name: `Wallpaper (Vanta Clouds)${info ? ` [${info}]` : ""}` }
+    ),
+  VANTAWAVES: (info?: string): Worker =>
     new Worker(
       new URL(
         "components/system/Desktop/Wallpapers/vantaWaves/wallpaper.worker",

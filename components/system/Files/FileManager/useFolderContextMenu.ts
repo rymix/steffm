@@ -179,13 +179,22 @@ const useFolderContextMenu = (
                       toggle: wallpaperImage === "MATRIX 3D",
                     },
                     {
-                      action: () => setWallpaper("VANTA"),
-                      label: `Vanta Waves${
-                        wallpaperImage === "VANTA WIREFRAME"
+                      action: () => setWallpaper("VANTACLOUDS"),
+                      label: `Vanta Clouds${
+                        wallpaperImage === "VANTACLOUDS WIREFRAME"
                           ? " (Wireframe)"
                           : ""
                       }`,
-                      toggle: wallpaperImage.startsWith("VANTA"),
+                      toggle: wallpaperImage.startsWith("VANTACLOUDS"),
+                    },
+                    {
+                      action: () => setWallpaper("VANTAWAVES"),
+                      label: `Vanta Waves${
+                        wallpaperImage === "VANTAWAVES WIREFRAME"
+                          ? " (Wireframe)"
+                          : ""
+                      }`,
+                      toggle: wallpaperImage.startsWith("VANTAWAVES"),
                     },
                   ],
                 },
