@@ -52,14 +52,7 @@ export type VantaClouds = {
   resize: () => void;
 };
 
-export type VantaObject = {
-  WAVES: (settings: VantaCloudsSettings) => VantaClouds;
+export type VantaCloudsObject = {
+  CLOUDS: (settings: VantaCloudsSettings) => VantaClouds;
   current: VantaClouds;
 };
-
-declare global {
-  interface Window {
-    THREE: unknown;
-    VANTA: VantaObject;
-  }
-}

@@ -5,13 +5,13 @@ import {
   libs,
 } from "components/system/Desktop/Wallpapers/vantaWaves/config";
 import type {
-  VantaObject,
   VantaWaves,
+  VantaWavesObject,
 } from "components/system/Desktop/Wallpapers/vantaWaves/types";
 
 declare global {
   // eslint-disable-next-line vars-on-top, no-var
-  var VANTA: VantaObject;
+  var VANTA: VantaWavesObject;
 }
 
 let waveEffect: VantaWaves;

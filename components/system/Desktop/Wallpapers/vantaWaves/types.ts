@@ -52,14 +52,7 @@ export type VantaWaves = {
   resize: () => void;
 };
 
-export type VantaObject = {
+export type VantaWavesObject = {
   WAVES: (settings: VantaWavesSettings) => VantaWaves;
   current: VantaWaves;
 };
-
-declare global {
-  interface Window {
-    THREE: unknown;
-    VANTA: VantaObject;
-  }
-}

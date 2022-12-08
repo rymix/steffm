@@ -21,10 +21,10 @@ const vantaClouds = (
   if (!el || typeof WebGLRenderingContext === "undefined") return;
 
   loadFiles(libs, true).then(() => {
-    const { VANTA: { WAVES } = {} } = window;
+    const { VANTA: { CLOUDS } = {} } = window;
 
-    if (WAVES) {
-      WAVES({
+    if (CLOUDS) {
+      CLOUDS({
         el,
         ...disableControls,
         ...(config as VantaCloudsConfig),
