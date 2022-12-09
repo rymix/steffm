@@ -187,6 +187,11 @@ const useFolderContextMenu = (
                       }`,
                       toggle: wallpaperImage.startsWith("VANTA"),
                     },
+                    {
+                      action: () => setWallpaper("CLOUDS"),
+                      label: "Vanta Clouds",
+                      toggle: wallpaperImage === "CLOUDS",
+                    },
                   ],
                 },
               ]
