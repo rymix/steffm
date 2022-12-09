@@ -1,15 +1,11 @@
 import type MatrixConfig from "components/system/Desktop/Wallpapers/Matrix/config";
 import type {
-  VantaCloudsConfig,
-  VantaCloudsObject,
-} from "components/system/Desktop/Wallpapers/vantaClouds/types";
-import type {
-  VantaWavesConfig,
-  VantaWavesObject,
+  VantaConfig,
+  VantaObject,
 } from "components/system/Desktop/Wallpapers/vantaWaves/types";
 import type { Size } from "components/system/Window/RndWindow/useResizable";
 
-export type WallpaperConfig = Partial<typeof MatrixConfig> | VantaWavesConfig;
+export type WallpaperConfig = Partial<typeof MatrixConfig> | VantaConfig;
 
 export type WallpaperFunc = (
   el: HTMLElement | null,
@@ -19,13 +15,13 @@ export type WallpaperFunc = (
 export type OffscreenRenderProps = {
   canvas: OffscreenCanvas;
   clockSize?: Size;
-  config?: VantaCloudsConfig | VantaWavesConfig;
+  config?: VantaConfig;
   devicePixelRatio: number;
 };
 
 declare global {
   interface Window {
     THREE: unknown;
-    VANTA: VantaCloudsObject | VantaWavesObject;
+    VANTA: VantaObject;
   }
 }

@@ -3,7 +3,7 @@ import {
   disableControls,
   libs,
 } from "components/system/Desktop/Wallpapers/vantaWaves/config";
-import type { VantaWavesConfig } from "components/system/Desktop/Wallpapers/vantaWaves/types";
+import type { VantaConfig } from "components/system/Desktop/Wallpapers/vantaWaves/types";
 import { loadFiles } from "utils/functions";
 
 const vantaWaves = (
@@ -27,7 +27,7 @@ const vantaWaves = (
       WAVES({
         el,
         ...disableControls,
-        ...(config as VantaWavesConfig),
+        ...(config as VantaConfig),
       });
     }
   });

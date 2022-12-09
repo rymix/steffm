@@ -5,8 +5,7 @@ import {
   WALLPAPER_WORKERS,
 } from "components/system/Desktop/Wallpapers/constants";
 import type { WallpaperConfig } from "components/system/Desktop/Wallpapers/types";
-import { config as vantaCloudsConfig } from "components/system/Desktop/Wallpapers/vantaClouds/config";
-import { config as vantaWavesConfig } from "components/system/Desktop/Wallpapers/vantaWaves/config";
+import { config as vantaConfig } from "components/system/Desktop/Wallpapers/vantaWaves/config";
 import { useFileSystem } from "contexts/fileSystem";
 import { useSession } from "contexts/session";
 import useWorker from "hooks/useWorker";
@@ -37,7 +36,7 @@ const useWallpaper = (
   const { sessionLoaded, setWallpaper, wallpaperImage, wallpaperFit } =
     useSession();
   const [wallpaperName] = wallpaperImage.split(" ");
-  const vantaWireframe = wallpaperImage === "VANTAWAVES WIREFRAME";
+  const vantaWireframe = wallpaperImage === "VANTA WIREFRAME";
   const wallpaperWorker = useWorker<void>(
     WALLPAPER_WORKERS[wallpaperName],
     undefined,
@@ -62,12 +61,9 @@ const useWallpaper = (
     if (desktopRef.current) {
       let config: WallpaperConfig | undefined;
 
-      if (wallpaperName === "VANTAWAVES") {
-        config = { ...vantaWavesConfig };
-        vantaWavesConfig.material.options.wireframe = vantaWireframe;
-      } else if (wallpaperName === "VANTACLOUDS") {
-        config = { ...vantaCloudsConfig };
-        vantaCloudsConfig.material.options.wireframe = vantaWireframe;
+      if (wallpaperName === "VANTA") {
+        config = { ...vantaConfig };
+        vantaConfig.material.options.wireframe = vantaWireframe;
       } else if (wallpaperImage === "MATRIX 3D") {
         config = { volumetric: true };
       }
@@ -92,7 +88,7 @@ const useWallpaper = (
           wallpaper?.(desktopRef.current, config)
         );
       } else {
-        setWallpaper("VANTAWAVES");
+        setWallpaper("VANTA");
       }
     }
   }, [
