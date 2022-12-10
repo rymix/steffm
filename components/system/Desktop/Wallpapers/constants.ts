@@ -20,7 +20,8 @@ export const WALLPAPER_PATHS: Record<
     import("components/system/Desktop/Wallpapers/ShaderToy/CoastalLandscape"),
   MATRIX: () => import("components/system/Desktop/Wallpapers/Matrix"),
   // TARTAN: () => import("components/system/Desktop/Wallpapers/Tartan"),
-  VANTA: () => import("components/system/Desktop/Wallpapers/vantaWaves"),
+  VANTACLOUDS: () => import("components/system/Desktop/Wallpapers/vantaClouds"),
+  VANTAWAVES: () => import("components/system/Desktop/Wallpapers/vantaWaves"),
 };
 
 export const WALLPAPER_WORKERS: Record<string, (info?: string) => Worker> = {

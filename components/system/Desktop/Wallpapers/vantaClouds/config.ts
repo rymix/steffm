@@ -1,17 +1,7 @@
 import type { VantaCloudsConfig } from "components/system/Desktop/Wallpapers/vantaClouds/types";
 
 export const config: VantaCloudsConfig = {
-  backgroundColor: 0x000000,
-  camera: {
-    far: 400,
-    fov: 30,
-    near: 0.1,
-    position: {
-      x: 0,
-      y: 10,
-      z: 10,
-    },
-  },
+  // backgroundColor: 0x000000,
   cloudColor: 0xadc1de,
   cloudShadowColor: 0x183550,
   gyroControls: true,

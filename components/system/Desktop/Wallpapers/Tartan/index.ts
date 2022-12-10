@@ -14,9 +14,9 @@ const Tartan = async (el?: HTMLElement | null): Promise<void> => {
   canvas.height = window.innerHeight;
   canvas.width = window.innerWidth;
 
-  const canvasContext = canvas.getContext("2d");
+  // const canvasContext = canvas.getContext("2d");
 
-  canvasContext.fillStyle = "orange";
+  // canvasContext.fillStyle = "orange";
 
   const elem = new HTMLElement();
   elem.innerHTML = "hello";
