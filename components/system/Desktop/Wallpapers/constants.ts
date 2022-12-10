@@ -40,7 +40,15 @@ export const WALLPAPER_WORKERS: Record<string, (info?: string) => Worker> = {
       ),
       { name: "Wallpaper (Hexells)" }
     ),
-  VANTA: (info?: string): Worker =>
+  VANTACLOUDS: (info?: string): Worker =>
+    new Worker(
+      new URL(
+        "components/system/Desktop/Wallpapers/vantaClouds/wallpaper.worker",
+        import.meta.url
+      ),
+      { name: `Wallpaper (Vanta Clouds)${info ? ` [${info}]` : ""}` }
+    ),
+  VANTAWAVES: (info?: string): Worker =>
     new Worker(
       new URL(
         "components/system/Desktop/Wallpapers/vantaWaves/wallpaper.worker",

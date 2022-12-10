@@ -3,21 +3,18 @@ import {
   config,
   disableControls,
   libs,
-} from "components/system/Desktop/Wallpapers/vantaWaves/config";
+} from "components/system/Desktop/Wallpapers/vantaClouds/config";
 import type {
-  VantaWaves,
-  VantaWavesObject,
-} from "components/system/Desktop/Wallpapers/vantaWaves/types";
+  VantaClouds,
+  VantaCloudsObject,
+} from "components/system/Desktop/Wallpapers/vantaClouds/types";
 
 declare global {
   // eslint-disable-next-line vars-on-top, no-var
-  var VANTAWAVES: VantaWavesObject;
+  var VANTACLOUDS: VantaCloudsObject;
 }
 
-let waveEffect: VantaWaves;
-
-// eslint-disable-next-line no-console
-console.log("globalThis", globalThis);
+let waveEffect: VantaClouds;
 
 globalThis.addEventListener(
   "message",
@@ -38,13 +35,13 @@ globalThis.addEventListener(
         devicePixelRatio,
       } = data as OffscreenRenderProps;
       const {
-        VANTAWAVES: { current: currentEffect = waveEffect, WAVES } = {},
+        VANTACLOUDS: { current: currentEffect = waveEffect, CLOUDS } = {},
       } = globalThis;
 
-      if (!canvas || !WAVES) return;
+      if (!canvas || !CLOUDS) return;
       if (currentEffect) currentEffect.destroy();
 
-      waveEffect = WAVES({
+      waveEffect = CLOUDS({
         ...(offscreenConfig || config),
         ...disableControls,
         canvas,

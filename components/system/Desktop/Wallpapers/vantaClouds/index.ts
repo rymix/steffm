@@ -2,15 +2,15 @@ import type { WallpaperConfig } from "components/system/Desktop/Wallpapers/types
 import {
   disableControls,
   libs,
-} from "components/system/Desktop/Wallpapers/vantaWaves/config";
-import type { VantaWavesConfig } from "components/system/Desktop/Wallpapers/vantaWaves/types";
+} from "components/system/Desktop/Wallpapers/vantaClouds/config";
+import type { VantaCloudsConfig } from "components/system/Desktop/Wallpapers/vantaClouds/types";
 import { loadFiles } from "utils/functions";
 
-const vantaWaves = (
+const vantaClouds = (
   el: HTMLElement | null,
   config: WallpaperConfig = {} as WallpaperConfig
 ): void => {
-  const { VANTAWAVES: { current: currentEffect } = {} } = window;
+  const { VANTACLOUDS: { current: currentEffect } = {} } = window;
 
   try {
     currentEffect?.destroy();
@@ -21,16 +21,16 @@ const vantaWaves = (
   if (!el || typeof WebGLRenderingContext === "undefined") return;
 
   loadFiles(libs, true).then(() => {
-    const { VANTAWAVES: { WAVES } = {} } = window;
+    const { VANTACLOUDS: { CLOUDS } = {} } = window;
 
-    if (WAVES) {
-      WAVES({
+    if (CLOUDS) {
+      CLOUDS({
         el,
         ...disableControls,
-        ...(config as VantaWavesConfig),
+        ...(config as VantaCloudsConfig),
       });
     }
   });
 };
 
-export default vantaWaves;
+export default vantaClouds;
