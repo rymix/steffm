@@ -1,28 +1,21 @@
 import type { VantaCloudsConfig } from "components/system/Desktop/Wallpapers/vantaClouds/types";
 
 export const config: VantaCloudsConfig = {
-  camera: {
-    far: 400,
-    fov: 30,
-    near: 0.1,
-  },
-  color: "hsl(225, 40%, 20%)",
-  colorCycleSpeed: 10,
-  forceAnimate: true,
-  hh: 50,
-  hue: 225,
-  lightness: 20,
-  material: {
-    options: {
-      fog: false,
-      wireframe: false,
-    },
-  },
-  saturation: 40,
-  shininess: 35,
-  waveHeight: 20,
-  waveSpeed: 0.25,
-  ww: 50,
+  Color: 0xff9900,
+  backgroundColor: 0x000000,
+  cloudColor: 0xadc1de,
+  cloudShadowColor: 0x183550,
+  forceAnimate: false,
+  gyroControls: false,
+  mouseControls: false,
+  scale: 1,
+  scaleMobile: 20,
+  skyColor: 0x68b8d7,
+  speed: 0.5,
+  sunColor: 0xff9919,
+  sunGlareColor: 0xff6633,
+  sunlightColor: 0xff9933,
+  touchControls: false,
 };
 
 export const disableControls = {
@@ -33,6 +26,6 @@ export const disableControls = {
 };
 
 export const libs = [
-  "/System/Vanta.js/three.min.js",
+  "/System/Vanta.js/three.r134.min.js",
   "/System/Vanta.js/vanta.clouds.min.js",
 ];

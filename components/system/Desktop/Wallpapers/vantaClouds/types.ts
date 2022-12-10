@@ -1,36 +1,21 @@
 import type { OffscreenRenderProps } from "components/system/Desktop/Wallpapers/types";
 
-type VantaCloudsCycleColor = {
-  colorCycleSpeed?: number;
-  hue?: number;
-  lightness?: number;
-  saturation?: number;
-};
-
-export type VantaCloudsConfig = VantaCloudsCycleColor & {
-  camera: {
-    far: number;
-    fov: number;
-    near: number;
-  };
-  color: string;
+export type VantaCloudsConfig = {
+  Color: number;
+  backgroundColor?: number;
+  cloudColor: number;
+  cloudShadowColor: number;
   forceAnimate?: boolean;
   gyroControls?: boolean;
-  hh: number;
-  material: {
-    options: {
-      fog?: boolean;
-      wireframe: boolean;
-    };
-  };
   mouseControls?: boolean;
-  mouseEase?: boolean;
-  shininess: number;
+  scale?: number;
+  scaleMobile?: number;
+  skyColor: number;
+  speed?: number;
+  sunColor: number;
+  sunGlareColor: number;
+  sunlightColor: number;
   touchControls?: boolean;
-  waveHeight: number;
-  waveSpeed: number;
-  ww: number;
-  zoom?: number;
 };
 
 type MainThreadRenderProps = {
