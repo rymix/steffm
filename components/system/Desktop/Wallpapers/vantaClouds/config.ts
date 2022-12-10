@@ -9,7 +9,7 @@ export const config: VantaCloudsConfig = {
   gyroControls: false,
   mouseControls: false,
   scale: 1,
-  scaleMobile: 20,
+  scaleMobile: 12,
   skyColor: 0x68b8d7,
   speed: 0.5,
   sunColor: 0xff9919,

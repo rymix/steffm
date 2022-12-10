@@ -33,6 +33,6 @@ export const disableControls = {
 };
 
 export const libs = [
-  "/System/Vanta.js/three.min.js",
+  "/System/Vanta.js/three.r134.min.js",
   "/System/Vanta.js/vanta.waves.min.js",
 ];
