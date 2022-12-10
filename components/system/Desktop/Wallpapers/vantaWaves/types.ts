@@ -1,13 +1,13 @@
 import type { OffscreenRenderProps } from "components/system/Desktop/Wallpapers/types";
 
-type VantaCycleColor = {
+type VantaWavesCycleColor = {
   colorCycleSpeed?: number;
   hue?: number;
   lightness?: number;
   saturation?: number;
 };
 
-export type VantaConfig = VantaCycleColor & {
+export type VantaWavesConfig = VantaWavesCycleColor & {
   camera: {
     far: number;
     fov: number;
@@ -39,8 +39,8 @@ type MainThreadRenderProps = {
 
 type RenderProps = MainThreadRenderProps | OffscreenRenderProps;
 
-type VantaSettings = RenderProps &
-  VantaConfig & {
+type VantaWavesSettings = RenderProps &
+  VantaWavesConfig & {
     THREE?: unknown;
   };
 
@@ -53,6 +53,13 @@ export type VantaWaves = {
 };
 
 export type VantaObject = {
-  WAVES: (settings: VantaSettings) => VantaWaves;
+  WAVES: (settings: VantaWavesSettings) => VantaWaves;
   current: VantaWaves;
 };
+
+declare global {
+  interface Window {
+    THREE: unknown;
+    VANTA: VantaObject;
+  }
+}
