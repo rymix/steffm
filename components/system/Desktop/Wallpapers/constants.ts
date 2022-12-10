@@ -18,9 +18,8 @@ export const WALLPAPER_PATHS: Record<
 > = {
   COASTAL_LANDSCAPE: () =>
     import("components/system/Desktop/Wallpapers/ShaderToy/CoastalLandscape"),
-  HEXELLS: () => import("components/system/Desktop/Wallpapers/hexells"),
   MATRIX: () => import("components/system/Desktop/Wallpapers/Matrix"),
-  TARTAN: () => import("components/system/Desktop/Wallpapers/Tartan"),
+  // TARTAN: () => import("components/system/Desktop/Wallpapers/Tartan"),
   VANTA: () => import("components/system/Desktop/Wallpapers/vantaWaves"),
 };
 
@@ -32,14 +31,6 @@ export const WALLPAPER_WORKERS: Record<string, (info?: string) => Worker> = {
         import.meta.url
       ),
       { name: "Wallpaper (Coastal Landscape)" }
-    ),
-  HEXELLS: (): Worker =>
-    new Worker(
-      new URL(
-        "components/system/Desktop/Wallpapers/hexells/wallpaper.worker",
-        import.meta.url
-      ),
-      { name: "Wallpaper (Hexells)" }
     ),
   VANTACLOUDS: (info?: string): Worker =>
     new Worker(

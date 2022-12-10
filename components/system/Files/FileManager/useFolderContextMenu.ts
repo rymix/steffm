@@ -164,11 +164,6 @@ const useFolderContextMenu = (
                       toggle: wallpaperImage === "COASTAL_LANDSCAPE",
                     },
                     {
-                      action: () => setWallpaper("HEXELLS"),
-                      label: "Hexells",
-                      toggle: wallpaperImage === "HEXELLS",
-                    },
-                    {
                       action: () => setWallpaper("MATRIX 2D"),
                       label: "Matrix (2D)",
                       toggle: wallpaperImage === "MATRIX 2D",
@@ -178,11 +173,11 @@ const useFolderContextMenu = (
                       label: "Matrix (3D)",
                       toggle: wallpaperImage === "MATRIX 3D",
                     },
-                    {
-                      action: () => setWallpaper("TARTAN"),
-                      label: "Tartan",
-                      toggle: wallpaperImage === "TARTAN",
-                    },
+                    // {
+                    //   action: () => setWallpaper("TARTAN"),
+                    //   label: "Tartan",
+                    //   toggle: wallpaperImage === "TARTAN",
+                    // },
                     {
                       action: () => setWallpaper("VANTACLOUDS"),
                       label: `Vanta Clouds${
