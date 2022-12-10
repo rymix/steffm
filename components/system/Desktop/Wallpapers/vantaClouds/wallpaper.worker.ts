@@ -1,7 +1,6 @@
 import type { OffscreenRenderProps } from "components/system/Desktop/Wallpapers/types";
 import {
   config,
-  disableControls,
   libs,
 } from "components/system/Desktop/Wallpapers/vantaClouds/config";
 import type {
@@ -14,7 +13,7 @@ declare global {
   var VANTACLOUDS: VantaCloudsObject;
 }
 
-let waveEffect: VantaClouds;
+let cloudEffect: VantaClouds;
 
 globalThis.addEventListener(
   "message",
@@ -26,8 +25,8 @@ globalThis.addEventListener(
     } else if (data instanceof DOMRect) {
       const { width, height } = data;
 
-      waveEffect?.renderer.setSize(width, height);
-      waveEffect?.resize();
+      cloudEffect?.renderer.setSize(width, height);
+      cloudEffect?.resize();
     } else {
       const {
         canvas,
@@ -35,15 +34,17 @@ globalThis.addEventListener(
         devicePixelRatio,
       } = data as OffscreenRenderProps;
       const {
-        VANTACLOUDS: { current: currentEffect = waveEffect, CLOUDS } = {},
+        VANTACLOUDS: { current: currentEffect = cloudEffect, CLOUDS } = {},
       } = globalThis;
+
+      // eslint-disable-next-line no-console
+      console.log("globalThis", globalThis);
 
       if (!canvas || !CLOUDS) return;
       if (currentEffect) currentEffect.destroy();
 
-      waveEffect = CLOUDS({
-        ...(offscreenConfig || config),
-        ...disableControls,
+      cloudEffect = CLOUDS({
+        ...(config || offscreenConfig),
         canvas,
         devicePixelRatio,
       });

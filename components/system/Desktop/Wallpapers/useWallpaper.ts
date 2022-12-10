@@ -77,7 +77,7 @@ const useWallpaper = (
         const offscreen = createOffscreenCanvas(desktopRef.current);
 
         wallpaperWorker.current.postMessage(
-          { canvas: offscreen, config, devicePixelRatio: 1 },
+          { canvas: offscreen, config, devicePixelRatio: 2 },
           [offscreen]
         );
 

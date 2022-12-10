@@ -16,9 +16,6 @@ declare global {
 
 let waveEffect: VantaWaves;
 
-// eslint-disable-next-line no-console
-console.log("globalThis", globalThis);
-
 globalThis.addEventListener(
   "message",
   ({ data }: { data: DOMRect | OffscreenRenderProps | string }) => {
@@ -45,7 +42,7 @@ globalThis.addEventListener(
       if (currentEffect) currentEffect.destroy();
 
       waveEffect = WAVES({
-        ...(offscreenConfig || config),
+        ...(config || offscreenConfig),
         ...disableControls,
         canvas,
         devicePixelRatio,
