@@ -13,7 +13,7 @@ const MixCard = (): JSX.Element => {
             <StyledMixCard key={mixcloudKey}>
               <figcaption>
                 {coverArtSmall ? (
-                  <img src={coverArtSmall} alt={name} />
+                  <img alt={name} src={coverArtSmall} />
                 ) : undefined}
                 <div className="title-card">
                   <h1>{name}</h1>

@@ -1,5 +1,3 @@
-/* eslint-disable sonarjs/no-duplicate-string */
-
 export type Track = {
   artistName: string;
   coverArtDate?: string | null;

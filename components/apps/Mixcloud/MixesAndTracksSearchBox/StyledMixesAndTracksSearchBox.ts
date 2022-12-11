@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 type StyledMixesSearchBoxProps = {
-  resultsBoxWidth?: number;
+  resultsBoxWidth: number | undefined;
 };
 
 const StyledMixesSearchBox = styled.div<StyledMixesSearchBoxProps>`
@@ -28,7 +28,7 @@ const StyledMixesSearchBox = styled.div<StyledMixesSearchBoxProps>`
     @keyframes scroll-left {
       0% {
         transform: ${({ resultsBoxWidth }) =>
-          `translateX(${resultsBoxWidth}px);`};
+          `translateX(${resultsBoxWidth || ""}px);`};
       }
 
       100% {

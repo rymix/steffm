@@ -8,7 +8,8 @@ import { bulletItem } from "utils/functions";
 const MixesAndTracksSearchBox = (): JSX.Element => {
   const { mixes, setMixcloudKey } = useMixcloud();
   const resultsBoxRef = useRef<HTMLDivElement>(null);
-  const resultsBoxWidth = resultsBoxRef?.current?.getBoundingClientRect().width;
+  const resultsBoxWidth: number | undefined =
+    resultsBoxRef?.current?.getBoundingClientRect().width;
 
   const handleOnSelect = (item: Mix): void => {
     setMixcloudKey(item.mixcloudKey);
@@ -23,7 +24,7 @@ const MixesAndTracksSearchBox = (): JSX.Element => {
         {item.shortName}
         <ul className="track-list">
           {item.tracks.map(({ sectionNumber, trackName }, index) => (
-            <li className="track-list-item" key={sectionNumber}>
+            <li key={sectionNumber} className="track-list-item">
               {index > 0 ? bulletItem(trackName) : trackName}
             </li>
           ))}
@@ -50,14 +51,14 @@ const MixesAndTracksSearchBox = (): JSX.Element => {
   };
 
   const fuseOptions = {
-    shouldSort: true,
-    threshold: 0.6,
-    location: 0,
     distance: 100,
     includeMatches: true,
+    keys: ["name", "tracks.trackName", "notes"],
+    location: 0,
     maxPatternLength: 32,
     minMatchCharLength: 1,
-    keys: ["name", "tracks.trackName", "notes"],
+    shouldSort: true,
+    threshold: 0.6,
   };
 
   return (
@@ -66,7 +67,6 @@ const MixesAndTracksSearchBox = (): JSX.Element => {
       resultsBoxWidth={resultsBoxWidth}
     >
       <ReactSearchAutocomplete<Mix>
-        autoFocus
         formatResult={formatResult}
         fuseOptions={fuseOptions}
         items={mixes}
@@ -74,6 +74,7 @@ const MixesAndTracksSearchBox = (): JSX.Element => {
         onSelect={handleOnSelect}
         placeholder="Search"
         styling={autocompleteStyling}
+        autoFocus
       />
     </StyledMixesAndTracksSearchBox>
   );

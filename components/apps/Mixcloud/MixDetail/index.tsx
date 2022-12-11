@@ -49,8 +49,8 @@ const MixDetail = (): JSX.Element => {
     const scrollToPosition = currentTrackDiv?.parentElement?.offsetTop || 0;
     const scrollToOffset = 100;
     currentTrackDiv?.parentElement?.parentElement?.scrollTo({
-      top: scrollToPosition - scrollToOffset,
       behavior: "smooth",
+      top: scrollToPosition - scrollToOffset,
     });
   }, [currentTrackDiv]);
 
@@ -92,6 +92,7 @@ const MixDetail = (): JSX.Element => {
 
               return (
                 <TracklistItem
+                  key={sectionNumber}
                   artistName={artistName}
                   className={
                     isActive(timestampFraction, nextTimestampFraction, played)
@@ -101,7 +102,6 @@ const MixDetail = (): JSX.Element => {
                   divRef={(element: HTMLDivElement) =>
                     addToRefs(element, index)
                   }
-                  key={sectionNumber}
                   progressThroughCurrentTrack={progressThroughCurrentTrack}
                   publisher={publisher}
                   remixArtistName={remixArtistName}

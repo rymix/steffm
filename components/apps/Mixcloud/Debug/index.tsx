@@ -85,14 +85,14 @@ const Debug = (): JSX.Element => {
         <dt>Volume bar</dt>
         <dd>
           <input
-            type="range"
-            min={0}
             max={0.999999}
-            step="any"
-            value={volume}
-            onMouseDown={handleVolumeMouseDown}
+            min={0}
             onChange={handleVolumeChange}
+            onMouseDown={handleVolumeMouseDown}
             onMouseUp={handleVolumeMouseUp}
+            step="any"
+            type="range"
+            value={volume}
           />
         </dd>
       </dl>

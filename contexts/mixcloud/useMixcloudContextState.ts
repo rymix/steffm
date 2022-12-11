@@ -191,7 +191,6 @@ const useMixcloudContextState = (): MixcloudContextState => {
   // Save progress only if the progress loader routine has completed
   useEffect(() => {
     if (ready && playing && loadedProgress) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       // const upsertProgressLog = (
       //   latestProgressItem: ProgressLog
       // ): ProgressLog[] => {

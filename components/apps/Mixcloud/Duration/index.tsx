@@ -17,6 +17,8 @@ const format = (seconds: number): string => {
   return `${mm}:${ss}`;
 };
 
-export default function Duration({ seconds }: DurationProps): JSX.Element {
-  return <time dateTime={`P${Math.round(seconds)}S`}>{format(seconds)}</time>;
-}
+const Duration = ({ seconds }: DurationProps): JSX.Element => (
+  <time dateTime={`P${Math.round(seconds)}S`}>{format(seconds)}</time>
+);
+
+export default Duration;

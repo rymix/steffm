@@ -30,13 +30,13 @@ const TracklistItem = ({
 
   return (
     <StyledTracklistItem
-      className={className}
       key={sectionNumber}
+      className={className}
       onClick={() => seekTo(startTimeToIndex(startTime, duration))}
       trackProgressPercentage={progressThroughCurrentTrack}
       value={sectionNumber}
     >
-      <div className="section-number" id={trackName} ref={divRef}>
+      <div ref={divRef} className="section-number" id={trackName}>
         {sectionNumber}
       </div>
       <div className="track-details">

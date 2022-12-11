@@ -11,8 +11,8 @@ const MixesSelecBox = (): JSX.Element => {
       {mixes.map((mix) => (
         <option
           key={mix.mixcloudKey}
-          value={mix.mixcloudKey}
           selected={mix.mixcloudKey === mixcloudKey}
+          value={mix.mixcloudKey}
         >
           {mix.name}
         </option>
