@@ -11,6 +11,7 @@ import type HtmlToImage from "html-to-image";
 import { basename, dirname, extname, join } from "path";
 import type { HTMLAttributes } from "react";
 import {
+  BULLET_FORMATTED,
   HIGH_PRIORITY_REQUEST,
   MAX_RES_ICON_OVERRIDE,
   ONE_TIME_PASSIVE_EVENT,
@@ -28,6 +29,12 @@ export const bufferToUrl = (buffer: Buffer, mimeType?: string): string =>
     : URL.createObjectURL(bufferToBlob(buffer));
 
 let dpi: number;
+
+export const bulletItem = (item: string | undefined): string | undefined =>
+  item ? BULLET_FORMATTED + item : undefined;
+
+export const clamp = (value: number, min: number, max: number): number =>
+  value > max ? max : value < min ? min : value;
 
 export const getDpi = (): number => {
   if (typeof dpi === "number") return dpi;

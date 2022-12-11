@@ -1,5 +1,6 @@
 import type { Processes } from "contexts/process/types";
 import dynamic from "next/dynamic";
+import themes from "styles/themes";
 import { FOLDER_ICON, TASKBAR_HEIGHT } from "utils/constants";
 
 const directory: Processes = {
@@ -129,6 +130,22 @@ const directory: Processes = {
       "/Program Files/Marked/purify.min.js",
     ],
     title: "Marked",
+  },
+  MixcloudDebug: {
+    Component: dynamic(() => import("components/apps/Mixcloud/Debug")),
+    backgroundColor: themes.defaultTheme.colors.window.background,
+    icon: "/icons/mixcloud.png",
+    title: "Mixcloud Debug",
+  },
+  MixcloudPlayer: {
+    Component: dynamic(() => import("components/apps/Mixcloud")),
+    backgroundColor: themes.defaultTheme.colors.window.background,
+    defaultSize: {
+      height: 480,
+      width: 640,
+    },
+    icon: "/icons/mixcloud.png",
+    title: "Mixcloud Player",
   },
   MonacoEditor: {
     Component: dynamic(() => import("components/apps/MonacoEditor")),

@@ -8,6 +8,13 @@ export const BASE_2D_CONTEXT_OPTIONS: CanvasRenderingContext2DSettings = {
   desynchronized: true,
 };
 
+export const BULLET = String.fromCodePoint(0x2022);
+
+export const BULLET_FORMATTED =
+  String.fromCodePoint(0xa0) +
+  String.fromCodePoint(0x2022) +
+  String.fromCodePoint(0xa0);
+
 export const IPFS_GATEWAY_URLS = [
   "https://<CID>.ipfs.cf-ipfs.com/",
   "https://<CID>.ipfs.dweb.link/",
@@ -310,6 +317,8 @@ export const MAX_RES_ICON_OVERRIDE: Record<string, [number, number]> = {
   user: [16, 16],
   videos: [16, 32],
 };
+
+export const MIXCLOUD_MIXES_FILE_LOCATION = "/System/Mixcloud/mixes.json.zip";
 
 export const DEFAULT_TEXT_FILE_SAVE_PATH = `${DESKTOP_PATH}/Untitled.txt`;
 
