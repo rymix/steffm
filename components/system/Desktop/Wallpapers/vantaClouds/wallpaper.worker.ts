@@ -37,9 +37,6 @@ globalThis.addEventListener(
         VANTACLOUDS: { current: currentEffect = cloudEffect, CLOUDS } = {},
       } = globalThis;
 
-      // eslint-disable-next-line no-console
-      console.log("globalThis", globalThis);
-
       if (!canvas || !CLOUDS) return;
       if (currentEffect) currentEffect.destroy();
 
