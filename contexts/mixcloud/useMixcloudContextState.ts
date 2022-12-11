@@ -75,7 +75,7 @@ const useMixcloudContextState = (): MixcloudContextState => {
   const [duration, setDuration] = useState(0);
   const [loadedProgress, setLoadedProgress] = useState(false);
   const [loop, setLoop] = useState(false);
-  const [mixcloudKey, setMixcloudKey] = useState("my-pair-of-shoes-volume-88");
+  const [mixcloudKey, setMixcloudKey] = useState("");
   const [mixcloudRef, setMixcloudRef] =
     useState<React.RefObject<ReactPlayer>>();
   const [mixes, setMixes] = useState<Mix[]>([]);
@@ -155,6 +155,13 @@ const useMixcloudContextState = (): MixcloudContextState => {
     loadMixesFromFile();
     populateProgressLogFromFile();
   }, [fs]);
+
+  // Init current mixcloudKey
+  useEffect(() => {
+    if (mixes.length > 0 && !mixcloudKey) {
+      setMixcloudKey(getRandomUnplayedMixcloudKey());
+    }
+  }, [mixcloudKey, mixes]);
 
   // Select initial random unplayed Mix
   useEffect(() => {
