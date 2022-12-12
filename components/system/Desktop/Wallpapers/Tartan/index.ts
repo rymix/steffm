@@ -1,14 +1,22 @@
+import tartanConfig from "components/system/Desktop/Wallpapers/Tartan/config";
+import type { WallpaperConfig } from "components/system/Desktop/Wallpapers/types";
 import { loadFiles } from "utils/functions";
 
 const libs = ["/System/Tartan/plaid.js"];
 
 declare global {
   interface Window {
-    Tartan: (div: HTMLDivElement) => Promise<void>;
+    Tartan: (
+      canvas: HTMLDivElement,
+      config: typeof tartanConfig
+    ) => Promise<void>;
   }
 }
 
-const Tartan = async (el?: HTMLDivElement | null): Promise<void> => {
+const Tartan = async (
+  el?: HTMLDivElement | null,
+  config: WallpaperConfig = {} as WallpaperConfig
+): Promise<void> => {
   if (!el) return;
 
   const tartanContainer = document.createElement("div");
@@ -20,7 +28,7 @@ const Tartan = async (el?: HTMLDivElement | null): Promise<void> => {
 
   el.append(tartanContainer);
   await loadFiles(libs, undefined, undefined, true);
-  await window.Tartan?.(tartanContainer);
+  await window.Tartan?.(tartanContainer, { ...tartanConfig, ...config });
 };
 
 export default Tartan;

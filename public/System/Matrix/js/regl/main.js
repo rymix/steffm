@@ -38,7 +38,6 @@ delete window.Matrix;
 let previouslyLoaded = false;
 
 window.Matrix = async (canvas, config) => {
-
 	await Promise.all([loadJS("/System/Matrix/lib/regl.min.js"), loadJS("/System/Matrix/lib/gl-matrix.js")]);
 
 	const resize = (resOverride = config.resolution) => {

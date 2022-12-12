@@ -1,6 +1,8 @@
 delete window.Tartan;
 
-window.Tartan = (div) => {
+window.Tartan = (div, config) => {
+  console.log("config", config);
+
   document.getElementById("tartanContainer").style.height = window.innerHeight + "px";
   document.getElementById("tartanContainer").style.width = window.innerWidth + "px";
 
@@ -69,7 +71,7 @@ window.Tartan = (div) => {
 
   let ani;
 
-  const RESIZE_REDRAW_TIME = 500;
+  const RESIZE_REDRAW_TIME = config.resizeRedrawTime;
 
   const initTartan = () => {
     //
@@ -77,17 +79,10 @@ window.Tartan = (div) => {
     //
 
     const
-    ANIMATION_TIME = 1000,
-    PATTERN_WIDTH = 25,
-    BASE = 6,
-    COLORS = [
-      'black', 'lightgray', 'cadetblue',
-      'navy', 'teal', 'cornflowerblue', 'turquoise',
-      'olive', 'gold',
-      'maroon', 'darkorange', 'crimson', 'brown',
-      'darkgreen', 'forestgreen', 'lightseagreen',
-      'purple', 'mediumvioletred', 'thistle'
-    ];
+    ANIMATION_TIME = config.animationTime,
+    PATTERN_WIDTH = config.patternWidth,
+    BASE = config.base,
+    COLORS = config.colors;
 
     function getLine(vert, color, offset) {
       const
