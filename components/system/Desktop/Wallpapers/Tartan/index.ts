@@ -2,35 +2,30 @@
 
 declare global {
   interface Window {
-    Tartan: (canvas: HTMLCanvasElement) => Promise<void>;
+    Tartan: (div: HTMLDivElement) => Promise<void>;
   }
 }
 
-const Tartan = async (el?: HTMLElement | null): Promise<void> => {
+const Tartan = async (el?: HTMLDivElement | null): Promise<void> => {
   if (!el) return;
 
-  const canvas = document.createElement("canvas");
+  const tartanContainer = document.createElement("div");
+  tartanContainer.setAttribute(
+    "style",
+    `background-color: red; position: absolute; top: 0; left: 0; height: ${window.innerHeight}px; width: ${window.innerWidth}px; z-index: -1;`
+  );
+  // tartanContainer.setAttribute("style", `height: ${window.innerHeight}`);
+  tartanContainer.innerHTML =
+    "<p>FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br />FARTS<br /></p>";
 
-  canvas.height = window.innerHeight;
-  canvas.width = window.innerWidth;
+  // tartanContainer.height = window.innerHeight;
+  // tartanContainer.width = window.innerWidth;
 
-  // const canvasContext = canvas.getContext("2d");
+  console.log("el", el);
+  console.log("tartanContainer", tartanContainer);
 
-  // canvasContext.fillStyle = "orange";
-
-  const elem = new HTMLElement();
-  elem.innerHTML = "hello";
-  canvas.append(elem);
-
-  // eslint-disable-next-line no-console
-  console.log("canvas", canvas);
-
-  el.append(canvas);
-
-  await window.Tartan?.(canvas).then(() => {
-    // eslint-disable-next-line no-console
-    console.log("appended", window.Tartan);
-  });
+  el.append(tartanContainer);
+  // document.body.append(tartanContainer);
 
   // await loadFiles(libs, undefined, undefined, true);
 
