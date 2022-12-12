@@ -76,14 +76,7 @@ const useWallpaper = (
 
       window.WallpaperDestroy?.();
 
-      console.log("wallpaperName", wallpaperName);
-      console.log(
-        "WALLPAPER_PATHS[wallpaperName]",
-        WALLPAPER_PATHS[wallpaperName]
-      );
-      console.log("wallpaperWorker.current", wallpaperWorker.current);
       if (window.OffscreenCanvas !== undefined && wallpaperWorker.current) {
-        console.log("Get here");
         const offscreen = createOffscreenCanvas(desktopRef.current);
 
         wallpaperWorker.current.postMessage(
@@ -98,7 +91,6 @@ const useWallpaper = (
           wallpaper?.(desktopRef.current, config)
         );
       } else {
-        console.log("Fallback");
         setWallpaper("VANTACLOUDS");
       }
     }
