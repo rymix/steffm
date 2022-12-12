@@ -69,12 +69,15 @@ window.Tartan = (div) => {
 
   let ani;
 
+  const RESIZE_REDRAW_TIME = 500;
+
   const initTartan = () => {
     //
     // Draw pattern
     //
 
     const
+    ANIMATION_TIME = 1000,
     PATTERN_WIDTH = 25,
     BASE = 6,
     COLORS = [
@@ -224,7 +227,7 @@ window.Tartan = (div) => {
           ani_i += 1;
           ani_i %= DIVS.length;
         },
-        400
+        ANIMATION_TIME
       );
     }
 
@@ -239,7 +242,7 @@ window.Tartan = (div) => {
   const resize = () => {
     if (ani) clearInterval(ani);
     clearTimeout(debounce);
-    debounce = setTimeout(initTartan, 500);
+    debounce = setTimeout(initTartan, RESIZE_REDRAW_TIME);
   };
   window.onresize = resize;
 
