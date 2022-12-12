@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import type { Processes } from "contexts/process/types";
 import dynamic from "next/dynamic";
 import { FOLDER_ICON, TASKBAR_HEIGHT } from "utils/constants";
@@ -129,6 +130,12 @@ const directory: Processes = {
       "/Program Files/Marked/purify.min.js",
     ],
     title: "Marked",
+  },
+  MixcloudCoverArt: {
+    Component: dynamic(() => import("components/apps/Mixcloud/CoverArt")),
+    backgroundColor: "#ffffff",
+    icon: "/System/Icons/mixcloud.png",
+    title: "Mixcloud CoverArt",
   },
   MixcloudDebug: {
     Component: dynamic(() => import("components/apps/Mixcloud/Debug")),
