@@ -60,8 +60,8 @@ const TaskbarEntry: FC<TaskbarEntryProps> = ({ icon, id, title }) => {
       </AnimatePresence>
       <Button ref={linkTaskbarEntry} onClick={onClick} {...label(title)}>
         <figure>
-          <Icon alt={title} imgSize={16} src={icon} />
-          <figcaption>{title}</figcaption>
+          <Icon alt={title} imgSize={24} src={icon} />
+          <progress max="1" value="1" />
         </figure>
       </Button>
     </StyledTaskbarEntry>

@@ -42,14 +42,19 @@ const sizes = {
   taskbar: {
     blur: "5px",
     entry: {
+      borderRadius: "5px",
       borderSize: "2px",
       fontSize: "12px",
-      iconSize: "16px",
-      maxWidth: "160px",
+      iconSize: "24px",
       peekImage: {
         height: 82,
         margin: 8,
       },
+      tileSize: "40px",
+    },
+    indicator: {
+      dormant: "6px",
+      on: "16px",
     },
   },
   titleBar: {

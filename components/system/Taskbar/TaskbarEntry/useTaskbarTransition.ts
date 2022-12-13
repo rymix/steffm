@@ -18,7 +18,7 @@ const useTaskbarTransition = (): MotionProps => {
       duration: TRANSITIONS_IN_MILLISECONDS.WINDOW / MILLISECONDS_IN_SECOND,
     },
     variants: {
-      active: { width: taskbar.entry.maxWidth },
+      active: { width: taskbar.entry.tileSize },
       initial: { width: 0 },
     },
   };

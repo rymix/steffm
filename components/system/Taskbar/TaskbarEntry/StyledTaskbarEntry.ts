@@ -7,12 +7,18 @@ type StyledTaskbarEntryProps = {
 };
 
 const StyledTaskbarEntry = styled(motion.li)<StyledTaskbarEntryProps>`
-  display: flex;
+  background-color: ${({ $foreground, theme }) =>
+    $foreground ? theme.colors.taskbar.foregroundFocussed : ""};
+  border: 1px solid
+    ${({ $foreground, theme }) =>
+      $foreground ? theme.colors.taskbar.entry.border : "transparent"};
+  border-radius: ${({ theme }) => theme.sizes.taskbar.entry.borderRadius};
   min-width: 0;
+  height: ${({ theme }) => theme.sizes.taskbar.entry.tileSize};
+  margin: 4px 0 0 0;
   overflow: hidden;
-  place-content: center;
   position: relative;
-  width: ${({ theme }) => theme.sizes.taskbar.entry.maxWidth};
+  width: ${({ theme }) => theme.sizes.taskbar.entry.tileSize};
 
   &::before {
     background-color: ${({ $foreground, $progress, theme }) =>
@@ -25,13 +31,6 @@ const StyledTaskbarEntry = styled(motion.li)<StyledTaskbarEntryProps>`
       $progress && $progress > 0 && $progress < 100
         ? `linear-gradient(to right, ${theme.colors.progressBackground} 0% ${$progress}%, transparent ${$progress}% 100%)`
         : ""};
-    border-bottom: ${({ $progress, theme }) => `
-        ${theme.sizes.taskbar.entry.borderSize} solid ${
-      $progress && $progress > 0 && $progress < 100
-        ? theme.colors.progress
-        : theme.colors.highlight
-    }
-      `};
     bottom: 0;
     content: "";
     height: ${({ $foreground }) => ($foreground ? "100%" : 0)};
@@ -40,7 +39,6 @@ const StyledTaskbarEntry = styled(motion.li)<StyledTaskbarEntryProps>`
     transition-duration: 0.1s;
     transition-property: ${({ $foreground }) =>
       $foreground ? "all" : "width"};
-    width: ${({ $foreground }) => ($foreground ? "100%" : `calc(100% - 8px)`)};
     z-index: -1;
   }
 
@@ -58,19 +56,19 @@ const StyledTaskbarEntry = styled(motion.li)<StyledTaskbarEntryProps>`
 
   &:active {
     &::before {
-      background-color: ${({ $foreground, theme }) =>
+      background-color: "${({ $foreground, theme }) =>
         $foreground
           ? theme.colors.taskbar.activeForeground
-          : theme.colors.taskbar.active};
+          : theme.colors.taskbar.active}";
     }
   }
 
   figure {
     align-items: center;
-    display: flex;
-    margin-bottom: ${({ theme }) => theme.sizes.taskbar.entry.borderSize};
-    margin-left: 4px;
-    padding: 4px;
+    display: grid;
+    grid-template-rows: 34px 6px;
+    justify-items: center;
+    margin: 4px 0 0 0;
 
     figcaption {
       color: ${({ theme }) => theme.colors.text};
@@ -82,10 +80,53 @@ const StyledTaskbarEntry = styled(motion.li)<StyledTaskbarEntryProps>`
     }
 
     picture {
-      height: ${({ theme }) => theme.sizes.taskbar.entry.iconSize};
       position: relative;
-      top: 1px;
-      width: ${({ theme }) => theme.sizes.taskbar.entry.iconSize};
+      height: 100%;
+    }
+
+    progress {
+      border: 0;
+      border-radius: 2.5px;
+      color: ${({ theme }) => theme.colors.taskbar.indicator.dormant};
+      display: block;
+      height: 4px;
+      margin: 0;
+      padding: 0 0 12px 0;
+      transition-duration: 300ms;
+      width: ${({ $foreground, theme }) =>
+        $foreground
+          ? theme.sizes.taskbar.indicator.on
+          : theme.sizes.taskbar.indicator.dormant};
+
+      &::-webkit-progress-value {
+        background: ${({ $foreground, theme }) =>
+          $foreground
+            ? theme.colors.taskbar.indicator.on
+            : theme.colors.taskbar.indicator.dormant};
+        border: 0;
+        height: 4px;
+        border-radius: 2px;
+      }
+
+      &::-moz-progress-bar {
+        background: ${({ $foreground, theme }) =>
+          $foreground
+            ? theme.colors.taskbar.indicator.on
+            : theme.colors.taskbar.indicator.dormant};
+        border: 0;
+        height: 4px;
+        border-radius: 2px;
+      }
+
+      &::-webkit-progress-bar {
+        background: ${({ $foreground, theme }) =>
+          $foreground
+            ? theme.colors.taskbar.indicator.on
+            : theme.colors.taskbar.indicator.dormant};
+        border: 0;
+        height: 4px;
+        border-radius: 2px;
+      }
     }
   }
 `;
