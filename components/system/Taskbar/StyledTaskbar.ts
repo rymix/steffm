@@ -4,6 +4,7 @@ import { TASKBAR_HEIGHT } from "utils/constants";
 const StyledTaskbar = styled.nav`
   backdrop-filter: ${({ theme }) => `blur(${theme.sizes.taskbar.blur})`};
   background-color: ${({ theme }) => theme.colors.taskbar.background};
+  border-top: 1px solid ${({ theme }) => theme.colors.taskbar.border};
   bottom: 0;
   contain: size layout;
   height: ${TASKBAR_HEIGHT}px;

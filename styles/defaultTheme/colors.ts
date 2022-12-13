@@ -27,6 +27,7 @@ const colors = {
     active: "hsla(0, 0%, 20%, 70%)",
     activeForeground: "hsla(0, 0%, 40%, 70%)",
     background: "hsla(0, 0%, 10%, 70%)",
+    border: "hsla(0, 0%, 100%, 70%)",
     foreground: "hsla(0, 0%, 35%, 70%)",
     foregroundHover: "hsla(0, 0%, 45%, 70%)",
     foregroundProgress: "hsla(104, 22%, 45%, 30%)",
