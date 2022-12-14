@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const StyledCoverArt = styled.div`
   font-size: 75%;
+  overflow-y: scroll;
 
   dl {
     dt {

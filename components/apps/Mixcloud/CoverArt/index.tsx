@@ -13,8 +13,7 @@ type TrackArtProps = {
 
 const CoverArt = (): JSX.Element => {
   const { getMixByMixcloudKey } = useMixcloud();
-  const thisMix = getMixByMixcloudKey("adventures-in-decent-music-volume-37");
-  const [tracks, setTracks] = useState<Track[]>([]);
+  const thisMix = getMixByMixcloudKey("adventures-in-decent-music-volume-38");
   const [newTracksWithCoverArt, setNewTracksWithCoverArt] = useState<Track[]>(
     []
   );
@@ -45,7 +44,6 @@ const CoverArt = (): JSX.Element => {
     const requests = thisMix[0].tracks.map((track, index) => {
       return fetchCoverArtImages(track.artistName, track.trackName).then(
         (result) => {
-          console.log("result.length", result);
           const newTrack: Track = {
             ...track,
             coverArtDate: new Date().toISOString(),
@@ -53,18 +51,18 @@ const CoverArt = (): JSX.Element => {
               result && result.cover_image ? result.cover_image : "",
             coverArtSmall: result && result.thumb ? result.thumb : "",
           };
-          console.log("newTrack", newTrack as Track);
-          return newTrack;
+          return newTrack as Track;
         }
       );
     });
 
-    console.log("requests", requests);
     return Promise.all(requests);
   };
 
   const getTracksCoverArt = () => {
-    makeAxiosCoverArtRequests().then((res) => console.log("res", res));
+    makeAxiosCoverArtRequests().then((results) => {
+      setNewTracksWithCoverArt([...results]);
+    });
   };
 
   return (
@@ -90,21 +88,11 @@ const CoverArt = (): JSX.Element => {
       >
         Fetch Tracks Cover Art
       </button>
-      <button
-        onClick={() => {
-          console.log("tracks", tracks);
-        }}
-        type="button"
-        style={{ margin: "0.5em", padding: "1em" }}
-      >
-        Log
-      </button>
-      <dl>
-        <dt>thisMix</dt>
-        <dd>{thisMix[0]?.name}</dd>
-        {/* {tracks.map(
-          ({ trackName, publisher, coverArtLarge, coverArtSmall }) => {
-            <>
+      <h1>{thisMix[0]?.name}</h1>
+      {newTracksWithCoverArt.map(
+        ({ trackName, publisher, coverArtLarge, coverArtSmall }) => {
+          return (
+            <dl key={trackName}>
               <dt>trackName</dt>
               <dd>{trackName}</dd>
               <dt>publisher</dt>
@@ -113,23 +101,14 @@ const CoverArt = (): JSX.Element => {
               <dd>{coverArtLarge}</dd>
               <dt>coverArtSmall</dt>
               <dd>{coverArtSmall}</dd>
-            </>;
-          }
-        )} */}
-        {/* {Object.entries(singleTrack).map(([key, value], index) => (
-          <p key={key}>
-            {key}: {value}
-          </p>
-        ))} */}
-        {/* {newTracksWithCoverArt.map(( {trackName, artistName, remixArtistName, publisher, coverArtLarge, coverArtSmall}) => {
-              return (
-                <li key={trackName}>
-                  {trackName} / {artistName} / {remixArtistName} / {publisher}
-                </li>
-              );
-            });
-        })} */}
-      </dl>
+              <dd>
+                <img src={coverArtSmall} alt={trackName} />
+              </dd>
+              <dt>-----------------------------------</dt>
+            </dl>
+          );
+        }
+      )}
     </StyledCoverArt>
   );
 };
