@@ -4,6 +4,12 @@ const StyledCoverArt = styled.div`
   font-size: 75%;
   overflow-y: scroll;
 
+  code {
+    background: lightgrey;
+    display: block;
+    font-size: 12px;
+  }
+
   dl {
     dt {
       font-weight: bold;
