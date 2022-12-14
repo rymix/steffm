@@ -63,39 +63,45 @@ const CoverArt = (): JSX.Element => {
   //     });
   // };
 
-  const fetchData = async (artistName: string, trackName: string) => {
+  const fetchCoverArtImages = async (artistName: string, trackName: string) => {
     return await axios
       .get(
         `https://api.discogs.com/database/search?page=1&per-page=1&q=${trackName} / ${artistName}`,
         config
       )
       .then((res) => {
-        // console.log("res", res.data.results[0]);
         return res.data.results[0];
       });
   };
 
-  const getTracksCoverArt = () => {
-    const newTracks: Track[] = [];
-
-    thisMix[0].tracks.forEach(async (track, index) => {
+  const makeAxiosCoverArtRequests = async () => {
+    const requests = thisMix[0].tracks.map((track, index) => {
       if (index < 2) {
-        const discogsData = await fetchData(track.artistName, track.trackName);
-        console.log("discogsData", discogsData);
-        const newTrack: Track = {
-          ...track,
-          coverArtDate: new Date().toISOString(),
-          coverArtLarge: discogsData.cover_image,
-          coverArtSmall: discogsData.thumb,
-        };
-        console.log("newTrack", newTrack as Track);
-        newTracks.push(newTrack);
+        return fetchCoverArtImages(track.artistName, track.trackName).then(
+          (res) => {
+            const newTrack: Track = {
+              ...track,
+              coverArtDate: new Date().toISOString(),
+              coverArtLarge: res.cover_image,
+              coverArtSmall: res.thumb,
+            };
+            console.log("newTrack", newTrack as Track);
+            return newTrack;
+          }
+        );
       }
     });
 
-    console.log("newTracks", newTracks);
-    setTracks({ ...tracks, ...newTracks });
+    console.log("requests", requests);
+    return Promise.all(requests);
   };
+
+  const getTracksCoverArt = () => {
+    makeAxiosCoverArtRequests().then((res) => console.log("res", res));
+  };
+
+  // console.log("newTracks", newTracks);
+  // setTracks({ ...tracks, ...newTracks });
 
   return (
     <StyledCoverArt>
