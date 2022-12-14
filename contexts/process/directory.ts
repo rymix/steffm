@@ -134,13 +134,19 @@ const directory: Processes = {
   MixcloudCoverArt: {
     Component: dynamic(() => import("components/apps/Mixcloud/CoverArt")),
     backgroundColor: "#ffffff",
-    icon: "/System/Icons/mixcloud.png",
+    defaultSize: {
+      height: 200,
+      width: 320,
+    },
+    icon: "/System/Icons/mixcloud",
+    singleton: true,
     title: "Mixcloud CoverArt",
   },
   MixcloudDebug: {
     Component: dynamic(() => import("components/apps/Mixcloud/Debug")),
     backgroundColor: "#ffffff",
-    icon: "/System/Icons/mixcloud.png",
+    icon: "/System/Icons/mixcloud",
+    singleton: true,
     title: "Mixcloud Debug",
   },
   MixcloudPlayer: {
@@ -150,7 +156,8 @@ const directory: Processes = {
       height: 480,
       width: 640,
     },
-    icon: "/System/Icons/mixcloud.png",
+    icon: "/System/Icons/mixcloud",
+    singleton: true,
     title: "Mixcloud Player",
   },
   MonacoEditor: {
