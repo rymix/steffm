@@ -24,44 +24,8 @@ const CoverArt = (): JSX.Element => {
       Authorization: `Discogs token=${discogsToken}`,
       "Content-Type": "application/json",
     },
+    timeout: 5000,
   };
-
-  // const getTracksCoverArt = () => {
-  //   return Promise.all(
-  //     thisMix.map((mix) => {
-  //       return mix.tracks.slice(6, 8).map((track) => {
-  //         return axios
-  //           .get(
-  //             `https://api.discogs.com/database/search?page=1&per-page=1&q=The Power of Love / Huey Lewis`,
-  //             config
-  //           )
-  //           .then((response) => {
-  //             const coverArtDate = new Date().toISOString();
-  //             const coverArtLarge = response.data.results[0].cover_image;
-  //             const coverArtSmall = response.data.results[0].thumb;
-  //             // console.log({ ...track, coverArtLarge, coverArtSmall });
-  //             return { ...track, coverArtDate, coverArtLarge, coverArtSmall };
-  //           })
-  //           .catch((error) => {
-  //             console.log(error.response.data.error);
-  //             throw error;
-  //           });
-  //       });
-  //     })
-  //   );
-  // };
-
-  // const getTracksCoverArt2 = () => {
-  //   getTracksCoverArt()
-  //     .then((data) => {
-  //       const newTrackArray = data;
-  //       console.log("newTrackArray", newTrackArray);
-  //       setNewTracksWithCoverArt((arr) => [...arr, newTrackArray]);
-  //     })
-  //     .catch((error) => {
-  //       console.log("error", error);
-  //     });
-  // };
 
   const fetchCoverArtImages = async (artistName: string, trackName: string) => {
     return await axios
@@ -71,25 +35,28 @@ const CoverArt = (): JSX.Element => {
       )
       .then((res) => {
         return res.data.results[0];
+      })
+      .catch((error) => {
+        console.log("error", error);
       });
   };
 
   const makeAxiosCoverArtRequests = async () => {
     const requests = thisMix[0].tracks.map((track, index) => {
-      if (index < 2) {
-        return fetchCoverArtImages(track.artistName, track.trackName).then(
-          (res) => {
-            const newTrack: Track = {
-              ...track,
-              coverArtDate: new Date().toISOString(),
-              coverArtLarge: res.cover_image,
-              coverArtSmall: res.thumb,
-            };
-            console.log("newTrack", newTrack as Track);
-            return newTrack;
-          }
-        );
-      }
+      return fetchCoverArtImages(track.artistName, track.trackName).then(
+        (result) => {
+          console.log("result.length", result);
+          const newTrack: Track = {
+            ...track,
+            coverArtDate: new Date().toISOString(),
+            coverArtLarge:
+              result && result.cover_image ? result.cover_image : "",
+            coverArtSmall: result && result.thumb ? result.thumb : "",
+          };
+          console.log("newTrack", newTrack as Track);
+          return newTrack;
+        }
+      );
     });
 
     console.log("requests", requests);
@@ -99,9 +66,6 @@ const CoverArt = (): JSX.Element => {
   const getTracksCoverArt = () => {
     makeAxiosCoverArtRequests().then((res) => console.log("res", res));
   };
-
-  // console.log("newTracks", newTracks);
-  // setTracks({ ...tracks, ...newTracks });
 
   return (
     <StyledCoverArt>
