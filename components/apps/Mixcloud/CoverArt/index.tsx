@@ -2,7 +2,7 @@
 /* eslint-disable */
 import axios from "axios";
 import StyledCoverArt from "components/apps/Mixcloud/CoverArt/StyledCoverArt";
-import { Track } from "components/apps/Mixcloud/types";
+import { Mix, Track } from "components/apps/Mixcloud/types";
 import { useMixcloud } from "contexts/mixcloud";
 import { useState } from "react";
 
@@ -14,11 +14,30 @@ type TrackArtProps = {
 const CoverArt = (): JSX.Element => {
   const { getMixByMixcloudKey } = useMixcloud();
   const thisMix = getMixByMixcloudKey("adventures-in-decent-music-volume-37");
+  const [newMixWithCoverArt, setNewMixWithCoverArt] = useState<Mix>({
+    category: "",
+    duration: "",
+    listOrder: 0,
+    mixcloudKey: "",
+    name: "",
+    releaseDate: "",
+    shortName: "",
+    tracks: [],
+  });
   const [newTracksWithCoverArt, setNewTracksWithCoverArt] = useState<Track[]>(
     []
   );
+  const [progressTracker, setProgressTracker] = useState({
+    copiedToClipboard: false,
+    uploadedToMixcloud: false,
+    fetchedMixCoverArt: false,
+    fetchedTracksCoverArt: false,
+    eyeballed: false,
+    wroteToMixesJson: false,
+  });
+  console.log("progressTracker", progressTracker);
   const discogsToken = "iyiHgpwTdcfUkpZQmaIyIGJLUAdBzHYJKtTTaUWp";
-  const config = {
+  const discogsConfig = {
     headers: {
       Authorization: `Discogs token=${discogsToken}`,
       "Content-Type": "application/json",
@@ -26,11 +45,14 @@ const CoverArt = (): JSX.Element => {
     timeout: 5000,
   };
 
-  const fetchCoverArtImages = async (artistName: string, trackName: string) => {
+  const fetchTracksCoverArtImages = async (
+    artistName: string,
+    trackName: string
+  ) => {
     return await axios
       .get(
         `https://api.discogs.com/database/search?page=1&per-page=1&q=${trackName} / ${artistName}`,
-        config
+        discogsConfig
       )
       .then((res) => {
         return res.data.results[0];
@@ -40,9 +62,9 @@ const CoverArt = (): JSX.Element => {
       });
   };
 
-  const makeAxiosCoverArtRequests = async () => {
+  const makeAxiosTracksCoverArtRequests = async () => {
     const requests = thisMix[0].tracks.map((track, index) => {
-      return fetchCoverArtImages(track.artistName, track.trackName).then(
+      return fetchTracksCoverArtImages(track.artistName, track.trackName).then(
         (result) => {
           const newTrack: Track = {
             ...track,
@@ -60,8 +82,9 @@ const CoverArt = (): JSX.Element => {
   };
 
   const getTracksCoverArt = () => {
-    makeAxiosCoverArtRequests().then((results) => {
+    makeAxiosTracksCoverArtRequests().then((results) => {
       setNewTracksWithCoverArt([...results]);
+      updateProgressTracker("fetchedTracksCoverArt");
     });
   };
 
@@ -103,38 +126,100 @@ const CoverArt = (): JSX.Element => {
       // Alert the user that the action took place.
       // Nobody likes hidden stuff being done under the hood!
       alert("Copied to clipboard");
+      updateProgressTracker("copiedToClipboard");
     });
+  };
+
+  const fetchMixCoverArtImages = async (mixcloudKey: string) => {
+    return await axios
+      .get(`https://api.mixcloud.com/rymixxx/${mixcloudKey}`)
+      .then((res) => {
+        return res.data.pictures;
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
+  };
+
+  const makeAxiosMixCoverArtRequests = async () => {
+    const requests = thisMix.map((mix, index) => {
+      return fetchMixCoverArtImages(mix.mixcloudKey).then((result) => {
+        const newMix: Mix = {
+          ...mix,
+          coverArtDate: new Date().toISOString(),
+          coverArtLarge: result && result.large ? result.large : "",
+          coverArtSmall: result && result.medium ? result.medium : "",
+        };
+        return newMix as Mix;
+      });
+    });
+
+    return Promise.all(requests);
+  };
+
+  const getMixCoverArt = () => {
+    makeAxiosMixCoverArtRequests().then((results) => {
+      setNewMixWithCoverArt({ ...results[0] });
+      updateProgressTracker("fetchedMixCoverArt");
+    });
+  };
+
+  const confirmMixcloudUpload = () => {
+    updateProgressTracker("uploadedToMixcloud");
+  };
+
+  const confirmChecked = () => {
+    updateProgressTracker("eyeballed");
+  };
+
+  const writeToMixesJson = () => {
+    console.log("Writing to mixes.json");
+    updateProgressTracker("wroteToMixesJson");
+  };
+
+  const updateProgressTracker = (keyName: string) => {
+    setProgressTracker({ ...progressTracker, [`${keyName}`]: true });
   };
 
   return (
     <StyledCoverArt>
-      <button
-        onClick={getTracksCoverArt}
-        type="button"
-        style={{ margin: "0.5em", padding: "1em" }}
-      >
-        Generate M3U Playlist
+      <button onClick={copyToClipboard} type="button">
+        1. Copy M3U to Clipboard
       </button>
       <button
-        onClick={copyToClipboard}
+        onClick={confirmMixcloudUpload}
         type="button"
-        style={{ margin: "0.5em", padding: "1em" }}
+        disabled={!progressTracker.copiedToClipboard}
       >
-        Copy M3U to Clipboard
+        2. Upload Mix and M3U to Mixcloud
       </button>
-      {/* <button
-        onClick={getTracksCoverArt}
+      <button
+        onClick={getMixCoverArt}
         type="button"
-        style={{ margin: "0.5em", padding: "1em" }}
+        disabled={!progressTracker.uploadedToMixcloud}
       >
-        Fetch Mix Cover Art
-      </button> */}
+        3. Fetch Mix Cover Art from Mixcloud
+      </button>
       <button
         onClick={getTracksCoverArt}
         type="button"
-        style={{ margin: "0.5em", padding: "1em" }}
+        disabled={!progressTracker.fetchedMixCoverArt}
       >
-        Fetch Tracks Cover Art
+        4. Fetch Tracks Cover Art from Discogs
+      </button>
+      <button
+        onClick={confirmChecked}
+        type="button"
+        disabled={!progressTracker.fetchedTracksCoverArt}
+      >
+        5. Confirm Checked Data
+      </button>
+      <button
+        onClick={writeToMixesJson}
+        type="button"
+        disabled={!progressTracker.eyeballed}
+      >
+        6. Write to mixes.json
       </button>
       <h1>{thisMix[0]?.name}</h1>
 
@@ -146,7 +231,7 @@ const CoverArt = (): JSX.Element => {
         <br />
         FILE "{thisMix[0]?.fileName}" MP3
         <br />
-        {newTracksWithCoverArt.map(
+        {thisMix[0].tracks.map(
           ({
             artistName,
             trackName,
@@ -172,7 +257,23 @@ const CoverArt = (): JSX.Element => {
         )}
       </code>
 
-      <h2>Cover Art Listing</h2>
+      <h2>Mix Cover Art</h2>
+      <dl key={newMixWithCoverArt.mixcloudKey}>
+        <dt>name</dt>
+        <dd>{newMixWithCoverArt.name}</dd>
+        <dt>coverArtLarge</dt>
+        <dd>{newMixWithCoverArt.coverArtLarge}</dd>
+        <dt>coverArtSmall</dt>
+        <dd>{newMixWithCoverArt.coverArtSmall}</dd>
+        <dd>
+          <img
+            src={newMixWithCoverArt.coverArtSmall}
+            alt={newMixWithCoverArt.name}
+          />
+        </dd>
+      </dl>
+
+      <h2>Tracks Cover Art</h2>
       {newTracksWithCoverArt.map(
         ({ trackName, publisher, coverArtLarge, coverArtSmall }) => {
           return (
