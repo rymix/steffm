@@ -13,14 +13,6 @@ const StyledCoverArt = styled.div`
     }
   }
 
-  code {
-    background: lightgrey;
-    display: block;
-    font-size: 12px;
-    max-height: 200px;
-    overflow-y: scroll;
-  }
-
   dl {
     dt {
       font-weight: bold;
@@ -29,6 +21,18 @@ const StyledCoverArt = styled.div`
     dd {
       margin-left: 2em;
     }
+  }
+
+  h2 {
+    margin-top: 1em;
+  }
+
+  pre {
+    background: lightgrey;
+    display: block;
+    font-size: 11px;
+    max-height: 200px;
+    overflow-y: scroll;
   }
 
   ul {

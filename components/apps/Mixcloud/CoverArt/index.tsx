@@ -28,14 +28,14 @@ const CoverArt = (): JSX.Element => {
     []
   );
   const [progressTracker, setProgressTracker] = useState({
-    copiedToClipboard: false,
+    copiedJSONToClipboard: false,
+    copiedM3UToClipboard: false,
     uploadedToMixcloud: false,
     fetchedMixCoverArt: false,
     fetchedTracksCoverArt: false,
     eyeballed: false,
     wroteToMixesJson: false,
   });
-  console.log("progressTracker", progressTracker);
   const discogsToken = "iyiHgpwTdcfUkpZQmaIyIGJLUAdBzHYJKtTTaUWp";
   const discogsConfig = {
     headers: {
@@ -84,6 +84,10 @@ const CoverArt = (): JSX.Element => {
   const getTracksCoverArt = () => {
     makeAxiosTracksCoverArtRequests().then((results) => {
       setNewTracksWithCoverArt([...results]);
+      setNewMixWithCoverArt({
+        ...newMixWithCoverArt,
+        tracks: [...results],
+      });
       updateProgressTracker("fetchedTracksCoverArt");
     });
   };
@@ -114,10 +118,10 @@ const CoverArt = (): JSX.Element => {
     return ms;
   };
 
-  const copyToClipboard = () => {
-    const copyText = document?.getElementById("m3u")?.innerHTML
+  const copyToClipboard = (divId: string) => {
+    const copyText = document?.getElementById(divId)?.innerHTML
       ? document
-          ?.getElementById("m3u")
+          ?.getElementById(divId)
           ?.innerHTML.replaceAll("&nbsp;", " ")
           .replaceAll("<br>", "\r\n")
           .replaceAll("&amp;", "&")
@@ -126,7 +130,7 @@ const CoverArt = (): JSX.Element => {
       // Alert the user that the action took place.
       // Nobody likes hidden stuff being done under the hood!
       alert("Copied to clipboard");
-      updateProgressTracker("copiedToClipboard");
+      updateProgressTracker(`copied${divId.toUpperCase()}ToClipboard`);
     });
   };
 
@@ -183,13 +187,13 @@ const CoverArt = (): JSX.Element => {
 
   return (
     <StyledCoverArt>
-      <button onClick={copyToClipboard} type="button">
+      <button onClick={() => copyToClipboard("m3u")} type="button">
         1. Copy M3U to Clipboard
       </button>
       <button
         onClick={confirmMixcloudUpload}
         type="button"
-        disabled={!progressTracker.copiedToClipboard}
+        disabled={!progressTracker.copiedM3UToClipboard}
       >
         2. Upload Mix and M3U to Mixcloud
       </button>
@@ -215,16 +219,23 @@ const CoverArt = (): JSX.Element => {
         5. Confirm Checked Data
       </button>
       <button
-        onClick={writeToMixesJson}
+        onClick={() => copyToClipboard("json")}
         type="button"
         disabled={!progressTracker.eyeballed}
       >
-        6. Write to mixes.json
+        6. Copy JSON to Clipboard
+      </button>
+      <button
+        onClick={writeToMixesJson}
+        type="button"
+        disabled={!progressTracker.copiedJSONToClipboard}
+      >
+        7. Write to mixes.json
       </button>
       <h1>{thisMix[0]?.name}</h1>
 
       <h2>M3U Export</h2>
-      <code id="m3u">
+      <pre id="m3u">
         PERFORMER "Stef.FM"
         <br />
         TITLE "{thisMix[0]?.name}"
@@ -255,7 +266,10 @@ const CoverArt = (): JSX.Element => {
             );
           }
         )}
-      </code>
+      </pre>
+
+      <h2>mixes.json Export</h2>
+      <pre id="json">{JSON.stringify(newMixWithCoverArt, null, 2)}</pre>
 
       <h2>Mix Cover Art</h2>
       <dl key={newMixWithCoverArt.mixcloudKey}>
