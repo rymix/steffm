@@ -1,8 +1,6 @@
 delete window.Tartan;
 
 window.Tartan = (div, config) => {
-  console.log("config", config);
-
   document.getElementById("tartanContainer").style.height = window.innerHeight + "px";
   document.getElementById("tartanContainer").style.width = window.innerWidth + "px";
 
