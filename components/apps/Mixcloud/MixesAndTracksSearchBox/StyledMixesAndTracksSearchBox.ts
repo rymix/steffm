@@ -18,12 +18,12 @@ const StyledMixesSearchBox = styled.div<StyledMixesSearchBoxProps>`
 
   ul.track-list {
     align-items: center;
+
+    animation: scroll-left 30s linear infinite;
     display: flex;
     justify-content: flex-start;
     position: relative;
     width: fit-content;
-
-    animation: scroll-left 30s linear infinite;
 
     @keyframes scroll-left {
       0% {
@@ -37,7 +37,7 @@ const StyledMixesSearchBox = styled.div<StyledMixesSearchBoxProps>`
     }
 
     li.track-list-item {
-      color: #aaaaaa;
+      color: #aaa;
       position: relative;
     }
   }

@@ -13,9 +13,9 @@ const StyledTaskbarEntry = styled(motion.li)<StyledTaskbarEntryProps>`
     ${({ $foreground, theme }) =>
       $foreground ? theme.colors.taskbar.entry.border : "transparent"};
   border-radius: ${({ theme }) => theme.sizes.taskbar.entry.borderRadius};
-  min-width: 0;
   height: ${({ theme }) => theme.sizes.taskbar.entry.tileSize};
-  margin: 4px 0 0 0;
+  margin: 4px 0 0;
+  min-width: 0;
   overflow: hidden;
   position: relative;
   width: ${({ theme }) => theme.sizes.taskbar.entry.tileSize};
@@ -56,10 +56,10 @@ const StyledTaskbarEntry = styled(motion.li)<StyledTaskbarEntryProps>`
 
   &:active {
     &::before {
-      background-color: "${({ $foreground, theme }) =>
+      background-color: ${({ $foreground, theme }) =>
         $foreground
           ? theme.colors.taskbar.activeForeground
-          : theme.colors.taskbar.active}";
+          : theme.colors.taskbar.active};
     }
   }
 
@@ -68,7 +68,7 @@ const StyledTaskbarEntry = styled(motion.li)<StyledTaskbarEntryProps>`
     display: grid;
     grid-template-rows: 34px 6px;
     justify-items: center;
-    margin: 4px 0 0 0;
+    margin: 4px 0 0;
 
     figcaption {
       color: ${({ theme }) => theme.colors.text};
@@ -80,8 +80,8 @@ const StyledTaskbarEntry = styled(motion.li)<StyledTaskbarEntryProps>`
     }
 
     picture {
-      position: relative;
       height: 100%;
+      position: relative;
     }
 
     progress {
@@ -91,7 +91,7 @@ const StyledTaskbarEntry = styled(motion.li)<StyledTaskbarEntryProps>`
       display: block;
       height: 4px;
       margin: 0;
-      padding: 0 0 12px 0;
+      padding: 0 0 12px;
       transition-duration: 300ms;
       width: ${({ $foreground, theme }) =>
         $foreground
@@ -104,8 +104,8 @@ const StyledTaskbarEntry = styled(motion.li)<StyledTaskbarEntryProps>`
             ? theme.colors.taskbar.indicator.on
             : theme.colors.taskbar.indicator.dormant};
         border: 0;
-        height: 4px;
         border-radius: 2px;
+        height: 4px;
       }
 
       &::-moz-progress-bar {
@@ -114,8 +114,8 @@ const StyledTaskbarEntry = styled(motion.li)<StyledTaskbarEntryProps>`
             ? theme.colors.taskbar.indicator.on
             : theme.colors.taskbar.indicator.dormant};
         border: 0;
-        height: 4px;
         border-radius: 2px;
+        height: 4px;
       }
 
       &::-webkit-progress-bar {
@@ -124,8 +124,8 @@ const StyledTaskbarEntry = styled(motion.li)<StyledTaskbarEntryProps>`
             ? theme.colors.taskbar.indicator.on
             : theme.colors.taskbar.indicator.dormant};
         border: 0;
-        height: 4px;
         border-radius: 2px;
+        height: 4px;
       }
     }
   }

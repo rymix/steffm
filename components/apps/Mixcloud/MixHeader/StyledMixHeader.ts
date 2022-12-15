@@ -5,7 +5,7 @@ const StyledMixHeader = styled.figure`
   flex-flow: column;
 
   figcaption {
-    background: #eeeeee;
+    background: #eee;
     display: flex;
     flex: 0 1 auto;
     flex-flow: row;
@@ -20,12 +20,12 @@ const StyledMixHeader = styled.figure`
     }
 
     h2 {
-      color: #777777;
+      color: #777;
       font-size: 14px;
     }
 
     p {
-      color: #777777;
+      color: #777;
       font-size: 14px;
     }
   }

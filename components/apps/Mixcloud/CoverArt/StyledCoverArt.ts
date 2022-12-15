@@ -9,7 +9,7 @@ const StyledCoverArt = styled.div`
     padding: 1em;
 
     &:hover {
-      background: lightgrey;
+      background: #ccc;
     }
   }
 
@@ -28,7 +28,7 @@ const StyledCoverArt = styled.div`
   }
 
   pre {
-    background: lightgrey;
+    background: #ccc;
     display: block;
     font-size: 11px;
     max-height: 200px;

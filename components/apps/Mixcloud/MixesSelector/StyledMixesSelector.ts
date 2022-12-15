@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledMixesSelector = styled.div`
   align-items: center;
-  background: #cccccc;
+  background: #ccc;
   display: grid;
   grid-template-columns: repeat(2, 50%);
   height: 75px;

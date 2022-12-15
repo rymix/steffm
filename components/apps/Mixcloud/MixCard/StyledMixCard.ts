@@ -5,7 +5,7 @@ const StyledMixCard = styled.figure`
   flex-flow: column;
 
   figcaption {
-    background: #eeeeee;
+    background: #eee;
     display: flex;
     flex: 0 1 auto;
     flex-flow: row;
@@ -20,7 +20,7 @@ const StyledMixCard = styled.figure`
     }
 
     h2 {
-      color: #777777;
+      color: #777;
       font-size: 14px;
     }
 

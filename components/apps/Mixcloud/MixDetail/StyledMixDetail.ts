@@ -14,7 +14,7 @@ const StyledMixDetail = styled.div`
     width: 100%;
 
     &::after {
-      background: linear-gradient(180deg, #ffffff, transparent);
+      background: linear-gradient(180deg, #fff, transparent);
       content: close-quote;
       height: 50px;
       left: 0;
@@ -26,7 +26,7 @@ const StyledMixDetail = styled.div`
     }
 
     &::before {
-      background: linear-gradient(0deg, #ffffff, transparent);
+      background: linear-gradient(0deg, #fff, transparent);
       bottom: 0;
       content: close-quote;
       height: 50px;
@@ -54,7 +54,7 @@ const StyledMixDetail = styled.div`
           }
 
           20% {
-            background: #ffff00;
+            background: #ff0;
           }
 
           100% {
@@ -64,7 +64,7 @@ const StyledMixDetail = styled.div`
       }
 
       :hover {
-        background: #eeeeee;
+        background: #eee;
       }
 
       h1 {
@@ -72,7 +72,7 @@ const StyledMixDetail = styled.div`
       }
 
       h2 {
-        color: #777777;
+        color: #777;
         font-size: 12px;
       }
 
@@ -87,7 +87,7 @@ const StyledMixDetail = styled.div`
       }
 
       .start-time {
-        color: #777777;
+        color: #777;
         flex: 0 0 80px;
         font-size: 12px;
         text-align: center;

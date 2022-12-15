@@ -9,7 +9,7 @@ const StyledTracklistItem = styled.li<StyledTracklistItemProps>`
   position: relative;
 
   &::after {
-    background: #777777;
+    background: #777;
     content: "";
     height: 100%;
     left: 0;
