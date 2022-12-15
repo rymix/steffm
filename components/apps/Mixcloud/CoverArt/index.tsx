@@ -174,15 +174,17 @@ const CoverArt = (): JSX.Element => {
         <select onChange={(e) => setThisMixcloudKey(e.target.value)}>
           <option value="Select">Select</option>
 
-          {mixes.map((mix) => (
-            <option
-              key={mix.mixcloudKey}
-              selected={mix.mixcloudKey === thisMixcloudKey}
-              value={mix.mixcloudKey}
-            >
-              {mix.name}
-            </option>
-          ))}
+          {mixes
+            .sort((mix) => mix.name)
+            .map((mix) => (
+              <option
+                key={mix.mixcloudKey}
+                selected={mix.mixcloudKey === thisMixcloudKey}
+                value={mix.mixcloudKey}
+              >
+                {mix.name}
+              </option>
+            ))}
         </select>
       </div>
 

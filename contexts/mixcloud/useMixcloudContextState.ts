@@ -95,7 +95,10 @@ const useMixcloudContextState = (): MixcloudContextState => {
           const jsonString = Buffer.from(unzipped["mixes.json"]).toString(
             "utf8"
           );
-          const parsedData = JSON.parse(jsonString) as Mix[];
+          let parsedData = JSON.parse(jsonString) as Mix[];
+          parsedData = parsedData.sort((a, b) =>
+            a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+          );
           setMixes(parsedData);
         });
       }
