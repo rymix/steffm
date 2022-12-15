@@ -5,7 +5,7 @@ const StyledCoverArt = styled.div`
   overflow-y: scroll;
 
   button {
-    margin 0.5em;
+    margin: 0.5em;
     padding: 1em;
 
     &:hover {

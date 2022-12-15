@@ -44,6 +44,29 @@ export const getDpi = (): number => {
   return dpi;
 };
 
+export const hmsToMs = (hms: string): string => {
+  const pieces = hms.split(":");
+  let hours = 0;
+  let minutes = 0;
+  let seconds = 0;
+
+  if (pieces.length === 2) {
+    hours = 0;
+    minutes = Number.parseInt(pieces[0], 10);
+    seconds = Number.parseInt(pieces[1], 10);
+  } else {
+    hours = Number.parseInt(pieces[0], 10);
+    minutes = Number.parseInt(pieces[1], 10);
+    seconds = Number.parseInt(pieces[2], 10);
+  }
+
+  const newMinutes = hours * 60 + minutes;
+  return `${String(newMinutes).padStart(2, "0")}:${String(seconds).padStart(
+    2,
+    "0"
+  )}:00`;
+};
+
 export const toggleFullScreen = async (): Promise<void> => {
   try {
     await (document.fullscreenElement
