@@ -8,8 +8,11 @@ import { Fragment, useState } from "react";
 import { hmsToMs } from "utils/functions";
 
 const CoverArt = (): JSX.Element => {
-  const { getMixByMixcloudKey } = useMixcloud();
-  const thisMix = getMixByMixcloudKey("adventures-in-decent-music-volume-37");
+  const { getMixByMixcloudKey, mixes } = useMixcloud();
+  const [thisMixcloudKey, setThisMixcloudKey] = useState(
+    "adventures-in-decent-music-volume-37"
+  );
+  const thisMix = getMixByMixcloudKey(thisMixcloudKey);
   const [newMixWithCoverArt, setNewMixWithCoverArt] = useState<Mix>({
     category: "",
     duration: "",
@@ -167,6 +170,22 @@ const CoverArt = (): JSX.Element => {
 
   return (
     <StyledCoverArt>
+      <div>
+        <select onChange={(e) => setThisMixcloudKey(e.target.value)}>
+          <option value="Select">Select</option>
+
+          {mixes.map((mix) => (
+            <option
+              key={mix.mixcloudKey}
+              selected={mix.mixcloudKey === thisMixcloudKey}
+              value={mix.mixcloudKey}
+            >
+              {mix.name}
+            </option>
+          ))}
+        </select>
+      </div>
+
       <button onClick={() => copyToClipboard("m3u")} type="button">
         1. Copy M3U to Clipboard
       </button>

@@ -35,6 +35,16 @@ const StyledCoverArt = styled.div`
     overflow-y: scroll;
   }
 
+  select {
+    background: #eee;
+    border-radius: 5px;
+    margin: 0.5em;
+    min-width: 300px;
+    padding: 10px;
+    text-overflow: ellipsis;
+    width: 80%;
+  }
+
   ul {
     li {
       margin-bottom: 1em;
