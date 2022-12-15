@@ -11,7 +11,7 @@ export type WallpaperConfig =
   | VantaWavesConfig;
 
 export type WallpaperFunc = (
-  el: HTMLElement | null,
+  el: HTMLCanvasElement | HTMLDivElement | HTMLElement | null,
   config?: WallpaperConfig
 ) => Promise<void> | void;
 

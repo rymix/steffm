@@ -14,7 +14,7 @@ declare global {
 }
 
 const Tartan = async (
-  el?: HTMLDivElement | null,
+  el?: HTMLElement | null,
   config: WallpaperConfig = {} as WallpaperConfig
 ): Promise<void> => {
   if (!el) return;
