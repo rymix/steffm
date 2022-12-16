@@ -4,6 +4,7 @@ const StyledTaskbarEntries = styled.ol`
   column-gap: 1px;
   display: flex;
   height: 100%;
+  justify-content: center;
   left: ${({ theme }) => theme.sizes.startButton.width};
   margin: 0 3px;
   overflow: hidden;

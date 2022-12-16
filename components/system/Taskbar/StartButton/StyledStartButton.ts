@@ -11,10 +11,8 @@ const StyledStartButton = styled(Button)<StyledStartButtonProps>`
   display: flex;
   fill: ${({ theme }) => theme.colors.startButton};
   height: 100%;
-  left: 0;
   place-content: center;
   place-items: center;
-  position: absolute;
 
   && {
     width: ${({ theme }) => theme.sizes.startButton.width};
