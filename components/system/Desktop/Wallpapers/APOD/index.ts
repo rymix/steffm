@@ -1,5 +1,6 @@
 import apodConfig from "components/system/Desktop/Wallpapers/Tartan/config";
 import config from "next/config";
+import { jsonFetch, viewWidth } from "utils/functions";
 
 declare global {
   interface Window {
@@ -29,58 +30,24 @@ const Apod = async (el?: HTMLElement | null): Promise<void> => {
 
   el.append(apodContainer);
 
-  window.Apod = (div: HTMLElement): Promise<void> => {
-    const styleContainer = document.createElement("div");
-    styleContainer.innerHTML =
-      "<p style='color: white'>fartsfartsfartsfartsfartsfartsfartsfartsfartsfartsfarts</p>";
-    div.append(styleContainer);
+  window.Apod = async (div: HTMLElement): Promise<void> => {
+    let wallpaperUrl;
+    const {
+      date = "",
+      hdurl = "",
+      url = "",
+    } = await jsonFetch("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY");
 
-    return Promise.resolve();
+    if (hdurl || url) {
+      wallpaperUrl = ((viewWidth() > 1024 ? hdurl : url) || url) as string;
+      const newWallpaperImage = `APOD ${wallpaperUrl} ${date as string}`;
+      const styleContainer = document.createElement("div");
+      styleContainer.innerHTML = `<img src=${wallpaperUrl} alt=${newWallpaperImage} />`;
+      div.append(styleContainer);
+    }
   };
 
   await window.Apod?.(apodContainer, { ...apodConfig, ...config });
 };
 
 export default Apod;
-
-// const [, currentUrl, currentDate] = wallpaperImage.split(" ");
-// const [month, , day, , year] = new Intl.DateTimeFormat("en-US", {
-//   timeZone: "US/Eastern",
-// })
-//   .formatToParts(Date.now())
-//   .map(({ value }) => value);
-
-// if (currentDate === `${year}-${month}-${day}`) {
-//   wallpaperUrl = currentUrl;
-// } else {
-//   const {
-//     date = "",
-//     hdurl = "",
-//     url = "",
-//   } = await jsonFetch(
-//     "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY"
-//   );
-
-//   if (hdurl || url) {
-//     wallpaperUrl = ((viewWidth() > 1024 ? hdurl : url) || url) as string;
-//     newWallpaperFit = "fit";
-
-//     if (isYouTubeUrl(wallpaperUrl)) {
-//       const ytBaseUrl = `https://i.ytimg.com/vi/${getYouTubeUrlId(
-//         wallpaperUrl
-//       )}`;
-
-//       wallpaperUrl = `${ytBaseUrl}/maxresdefault.jpg`;
-//       fallbackBackground = `${ytBaseUrl}/hqdefault.jpg`;
-//     } else if (hdurl && url && hdurl !== url) {
-//       fallbackBackground = (wallpaperUrl === url ? hdurl : url) as string;
-//     }
-
-//     const newWallpaperImage = `APOD ${wallpaperUrl} ${date as string}`;
-
-//     if (newWallpaperImage !== wallpaperImage) {
-//       setWallpaper(newWallpaperImage, newWallpaperFit);
-//       setTimeout(loadWallpaper, MILLISECONDS_IN_DAY);
-//     }
-//   }
-// }
