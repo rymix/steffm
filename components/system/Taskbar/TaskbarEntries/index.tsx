@@ -1,10 +1,9 @@
+import StartButton from "components/system/Taskbar/StartButton";
 import StyledTaskbarEntries from "components/system/Taskbar/TaskbarEntries/StyledTaskbarEntries";
 import { useProcesses } from "contexts/process";
 import { AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";
 import { useState } from "react";
-
-import StartButton from "../StartButton";
 
 const StartMenu = dynamic(() => import("components/system/StartMenu"));
 
