@@ -1,14 +1,17 @@
-import apodConfig from "components/system/Desktop/Wallpapers/Tartan/config";
-import config from "next/config";
+import apodConfig from "components/system/Desktop/Wallpapers/APOD/config";
+import type { WallpaperConfig } from "components/system/Desktop/Wallpapers/types";
 import { jsonFetch, viewWidth } from "utils/functions";
 
 declare global {
   interface Window {
-    Apod: (div: HTMLDivElement, conf: typeof apodConfig) => Promise<void>;
+    Apod: (div: HTMLDivElement, config: typeof apodConfig) => Promise<void>;
   }
 }
 
-const Apod = async (el?: HTMLElement | null): Promise<void> => {
+const Apod = async (
+  el?: HTMLElement | null,
+  config: WallpaperConfig = {} as WallpaperConfig
+): Promise<void> => {
   if (!el) return;
 
   const previousApodContainer = window.document.querySelector("#apodContainer");
@@ -30,21 +33,48 @@ const Apod = async (el?: HTMLElement | null): Promise<void> => {
 
   el.append(apodContainer);
 
-  window.Apod = async (div: HTMLElement): Promise<void> => {
-    let wallpaperUrl;
-    const {
-      date = "",
-      hdurl = "",
-      url = "",
-    } = await jsonFetch("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY");
+  window.Apod = (div: HTMLElement, conf): Promise<void> => {
+    const RESIZE_REDRAW_TIME = conf.resizeRedrawTime;
 
-    if (hdurl || url) {
-      wallpaperUrl = ((viewWidth() > 1024 ? hdurl : url) || url) as string;
-      const newWallpaperImage = `APOD ${wallpaperUrl} ${date as string}`;
-      const styleContainer = document.createElement("div");
-      styleContainer.innerHTML = `<img src=${wallpaperUrl} alt=${newWallpaperImage} />`;
-      div.append(styleContainer);
-    }
+    const initApod = async (): Promise<void> => {
+      let wallpaperUrl;
+      const {
+        date = "",
+        hdurl = "",
+        url = "",
+      } = await jsonFetch(
+        "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY"
+      );
+
+      if (hdurl || url) {
+        wallpaperUrl = ((viewWidth() > 1024 ? hdurl : url) || url) as string;
+        const newWallpaperImage = `APOD ${wallpaperUrl} ${date as string}`;
+        const imgContainer = document.createElement("div");
+        imgContainer.setAttribute("id", "imgContainer");
+        imgContainer.innerHTML = `<img src=${wallpaperUrl} alt=${newWallpaperImage} />`;
+        div.append(imgContainer);
+      }
+
+      // eslint-disable-next-line consistent-return, unicorn/no-useless-promise-resolve-reject
+      return Promise.resolve();
+    };
+
+    let debounce: ReturnType<typeof setTimeout>;
+    const resize = (): void => {
+      clearTimeout(debounce);
+      const previousImgContainer =
+        window.document.querySelector("#imgContainer");
+      if (previousImgContainer !== null) {
+        previousImgContainer.outerHTML = "";
+      }
+      debounce = setTimeout(initApod, RESIZE_REDRAW_TIME);
+    };
+    window.addEventListener("resize", resize);
+
+    initApod();
+
+    // eslint-disable-next-line consistent-return, unicorn/no-useless-promise-resolve-reject
+    return Promise.resolve();
   };
 
   await window.Apod?.(apodContainer, { ...apodConfig, ...config });
