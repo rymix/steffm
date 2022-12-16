@@ -16,6 +16,7 @@ export const WALLPAPER_PATHS: Record<
   string,
   () => Promise<{ default: WallpaperFunc }>
 > = {
+  APOD: () => import("components/system/Desktop/Wallpapers/APOD"),
   COASTAL_LANDSCAPE: () =>
     import("components/system/Desktop/Wallpapers/ShaderToy/CoastalLandscape"),
   MATRIX: () => import("components/system/Desktop/Wallpapers/Matrix"),

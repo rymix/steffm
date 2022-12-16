@@ -11,15 +11,11 @@ import { useFileSystem } from "contexts/fileSystem";
 import { useSession } from "contexts/session";
 import useWorker from "hooks/useWorker";
 import { useCallback, useEffect } from "react";
-import { HIGH_PRIORITY_REQUEST, MILLISECONDS_IN_DAY } from "utils/constants";
+import { HIGH_PRIORITY_REQUEST } from "utils/constants";
 import {
   bufferToUrl,
   cleanUpBufferUrl,
   createOffscreenCanvas,
-  getYouTubeUrlId,
-  isYouTubeUrl,
-  jsonFetch,
-  viewWidth,
 } from "utils/functions";
 
 declare global {
@@ -113,52 +109,10 @@ const useWallpaper = (
     desktopRef.current?.querySelector(BASE_CANVAS_SELECTOR)?.remove();
 
     let wallpaperUrl = "";
-    let fallbackBackground = "";
-    let newWallpaperFit = wallpaperFit;
+    const fallbackBackground = "";
+    const newWallpaperFit = wallpaperFit;
 
-    if (wallpaperName === "APOD") {
-      const [, currentUrl, currentDate] = wallpaperImage.split(" ");
-      const [month, , day, , year] = new Intl.DateTimeFormat("en-US", {
-        timeZone: "US/Eastern",
-      })
-        .formatToParts(Date.now())
-        .map(({ value }) => value);
-
-      if (currentDate === `${year}-${month}-${day}`) {
-        wallpaperUrl = currentUrl;
-      } else {
-        const {
-          date = "",
-          hdurl = "",
-          url = "",
-        } = await jsonFetch(
-          "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY"
-        );
-
-        if (hdurl || url) {
-          wallpaperUrl = ((viewWidth() > 1024 ? hdurl : url) || url) as string;
-          newWallpaperFit = "fit";
-
-          if (isYouTubeUrl(wallpaperUrl)) {
-            const ytBaseUrl = `https://i.ytimg.com/vi/${getYouTubeUrlId(
-              wallpaperUrl
-            )}`;
-
-            wallpaperUrl = `${ytBaseUrl}/maxresdefault.jpg`;
-            fallbackBackground = `${ytBaseUrl}/hqdefault.jpg`;
-          } else if (hdurl && url && hdurl !== url) {
-            fallbackBackground = (wallpaperUrl === url ? hdurl : url) as string;
-          }
-
-          const newWallpaperImage = `APOD ${wallpaperUrl} ${date as string}`;
-
-          if (newWallpaperImage !== wallpaperImage) {
-            setWallpaper(newWallpaperImage, newWallpaperFit);
-            setTimeout(loadWallpaper, MILLISECONDS_IN_DAY);
-          }
-        }
-      }
-    } else if (await exists(wallpaperImage)) {
+    if (await exists(wallpaperImage)) {
       wallpaperUrl = bufferToUrl(await readFile(wallpaperImage));
     }
 
@@ -198,10 +152,8 @@ const useWallpaper = (
     exists,
     loadWallpaper,
     readFile,
-    setWallpaper,
     wallpaperFit,
     wallpaperImage,
-    wallpaperName,
   ]);
 
   useEffect(() => {

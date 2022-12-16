@@ -1,5 +1,3 @@
-delete window.Tartan;
-
 window.Tartan = (div, config) => {
   document.getElementById("tartanContainer").style.height = window.innerHeight + "px";
   document.getElementById("tartanContainer").style.width = window.innerWidth + "px";

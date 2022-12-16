@@ -6,10 +6,7 @@ const libs = ["/System/Tartan/plaid.js"];
 
 declare global {
   interface Window {
-    Tartan: (
-      canvas: HTMLDivElement,
-      config: typeof tartanConfig
-    ) => Promise<void>;
+    Tartan: (div: HTMLDivElement, config: typeof tartanConfig) => Promise<void>;
   }
 }
 
@@ -18,6 +15,16 @@ const Tartan = async (
   config: WallpaperConfig = {} as WallpaperConfig
 ): Promise<void> => {
   if (!el) return;
+
+  const previousApodContainer = window.document.querySelector("#apodContainer");
+  if (previousApodContainer !== null) {
+    previousApodContainer.outerHTML = "";
+  }
+  const previousTartanContainer =
+    window.document.querySelector("#tartanContainer");
+  if (previousTartanContainer !== null) {
+    previousTartanContainer.outerHTML = "";
+  }
 
   const tartanContainer = document.createElement("div");
   tartanContainer.setAttribute("id", "tartanContainer");
