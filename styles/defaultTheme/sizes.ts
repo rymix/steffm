@@ -27,7 +27,7 @@ const sizes = {
   },
   startButton: {
     iconSize: "15px",
-    width: "36px",
+    width: "40px",
   },
   startMenu: {
     maxHeight: 390,
