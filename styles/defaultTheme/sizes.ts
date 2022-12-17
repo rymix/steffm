@@ -1,7 +1,7 @@
 const sizes = {
   clock: {
     fontSize: "12px",
-    width: "76px",
+    width: "86px",
   },
   contextMenu: {
     subMenuOffset: 3,
@@ -38,6 +38,11 @@ const sizes = {
       width: 48,
     },
     size: 320,
+  },
+  systemTray: {
+    fontSize: "12px",
+    tileSize: "30px",
+    width: "100px",
   },
   taskbar: {
     blur: "5px",

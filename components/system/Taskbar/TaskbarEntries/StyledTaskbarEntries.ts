@@ -5,11 +5,13 @@ const StyledTaskbarEntries = styled.ol`
   display: flex;
   height: 100%;
   justify-content: center;
-  left: ${({ theme }) => theme.sizes.startButton.width};
   margin: 0 3px;
   overflow: hidden;
   position: absolute;
-  right: ${({ theme }) => theme.sizes.clock.width};
+  right: ${({ theme }) =>
+    theme.sizes.clock.width + theme.sizes.systemTray.width};
+  width: ${({ theme }) =>
+    `calc(100% - ${theme.sizes.clock.width} - ${theme.sizes.systemTray.width})`};
 `;
 
 export default StyledTaskbarEntries;
