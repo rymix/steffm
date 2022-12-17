@@ -56,7 +56,16 @@ const drawClockText = (dateTime: LocaleTimeDate): void => {
     offscreenCanvas.width,
     offscreenCanvas.height
   );
-  offscreenContext.fillText(dateTime.time, textPosition.x, textPosition.y);
+  offscreenContext.fillText(
+    dateTime.shortTime,
+    textPosition.x,
+    textPosition.y - 8
+  );
+  offscreenContext.fillText(
+    dateTime.shortDate,
+    textPosition.x,
+    textPosition.y + 8
+  );
 };
 
 const sendTick = (): void => {
