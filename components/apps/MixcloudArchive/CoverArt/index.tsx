@@ -3,7 +3,7 @@
 import axios from "axios";
 import StyledCoverArt from "components/apps/MixcloudArchive/CoverArt/StyledCoverArt";
 import type { Mix, Track } from "components/apps/MixcloudArchive/types";
-import { useMixcloudArchive } from "contexts/mixcloud";
+import { useMixcloudArchive } from "contexts/mixcloudArchive";
 import { Fragment, useState } from "react";
 import { hmsToMs } from "utils/functions";
 

@@ -1,5 +1,5 @@
 import contextFactory from "contexts/contextFactory";
-import useMixcloudContextState from "contexts/mixcloud/useMixcloudContextState";
+import useMixcloudContextState from "contexts/mixcloudArchive/useMixcloudContextState";
 
 const { Provider, useContext } = contextFactory(useMixcloudContextState);
 

@@ -1,7 +1,7 @@
 import { hoursMinutesSecondsToSeconds } from "components/apps/MixcloudArchive/functions";
 import StyledMixDetail from "components/apps/MixcloudArchive/MixDetail/StyledMixDetail";
 import TracklistItem from "components/apps/MixcloudArchive/MixDetail/TracklistItem";
-import { useMixcloudArchive } from "contexts/mixcloud";
+import { useMixcloudArchive } from "contexts/mixcloudArchive";
 import { useEffect, useRef } from "react";
 import { clamp } from "utils/functions";
 

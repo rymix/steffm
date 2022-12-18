@@ -1,4 +1,4 @@
-import { useMixcloudArchive } from "contexts/mixcloud";
+import { useMixcloudArchive } from "contexts/mixcloudArchive";
 import { bulletItem } from "utils/functions";
 
 import StyledMixHeader from "./StyledMixHeader";

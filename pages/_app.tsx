@@ -3,7 +3,7 @@ import Metadata from "components/pages/Metadata";
 import StyledApp from "components/pages/StyledApp";
 import { FileSystemProvider } from "contexts/fileSystem";
 import { MenuProvider } from "contexts/menu";
-import { MixcloudProvider } from "contexts/mixcloud";
+import { MixcloudProvider } from "contexts/mixcloudArchive";
 import { ProcessProvider } from "contexts/process";
 import { SessionProvider } from "contexts/session";
 import type { AppProps } from "next/app";

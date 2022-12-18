@@ -1,6 +1,6 @@
 import StyledMixesAndTracksSearchBox from "components/apps/MixcloudArchive/MixesAndTracksSearchBox/StyledMixesAndTracksSearchBox";
 import type { Mix } from "components/apps/MixcloudArchive/types";
-import { useMixcloudArchive } from "contexts/mixcloud";
+import { useMixcloudArchive } from "contexts/mixcloudArchive";
 import { useRef } from "react";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { bulletItem } from "utils/functions";

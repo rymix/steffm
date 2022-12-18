@@ -1,5 +1,5 @@
 import StyledMixCard from "components/apps/MixcloudArchive/MixCard/StyledMixCard";
-import { useMixcloudArchive } from "contexts/mixcloud";
+import { useMixcloudArchive } from "contexts/mixcloudArchive";
 import { bulletItem } from "utils/functions";
 
 const MixCard = (): JSX.Element => {
