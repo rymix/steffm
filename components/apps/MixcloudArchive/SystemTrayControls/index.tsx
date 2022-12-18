@@ -1,11 +1,11 @@
 import StyledSystemTrayControls from "components/apps/MixcloudArchive/SystemTrayControls/StyledSystemTrayControls";
-import { useMixcloud } from "contexts/mixcloud";
+import { useMixcloudArchive } from "contexts/mixcloud";
 import { useProcesses } from "contexts/process";
 import Button from "styles/common/Button";
 import Icon from "styles/common/Icon";
 
 const SystemTrayControls = (): JSX.Element => {
-  const { playing, ready, setPlaying } = useMixcloud();
+  const { playing, ready, setPlaying } = useMixcloudArchive();
   const { open } = useProcesses();
   const playPauseToggle = (): void => {
     if (!ready) open("MixcloudPlayer");

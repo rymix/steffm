@@ -1,10 +1,10 @@
-import { useMixcloud } from "contexts/mixcloud";
+import { useMixcloudArchive } from "contexts/mixcloud";
 import { bulletItem } from "utils/functions";
 
 import StyledMixHeader from "./StyledMixHeader";
 
 const MixHeader = (): JSX.Element => {
-  const { getMixByMixcloudKey, mixcloudKey } = useMixcloud();
+  const { getMixByMixcloudKey, mixcloudKey } = useMixcloudArchive();
 
   return (
     <>

@@ -1,8 +1,8 @@
 import StyledMixesSelectBox from "components/apps/MixcloudArchive/MixesSelectBox/StyledMixesSelectBox";
-import { useMixcloud } from "contexts/mixcloud";
+import { useMixcloudArchive } from "contexts/mixcloud";
 
 const MixesSelecBox = (): JSX.Element => {
-  const { mixes, mixcloudKey, setMixcloudKey } = useMixcloud();
+  const { mixes, mixcloudKey, setMixcloudKey } = useMixcloudArchive();
 
   return (
     <StyledMixesSelectBox onChange={(e) => setMixcloudKey(e.target.value)}>

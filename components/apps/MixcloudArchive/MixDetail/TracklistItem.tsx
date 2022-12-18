@@ -1,6 +1,6 @@
 import { startTimeToIndex } from "components/apps/MixcloudArchive/functions";
 import StyledTracklistItem from "components/apps/MixcloudArchive/MixDetail/StyledTracklistItem";
-import { useMixcloud } from "contexts/mixcloud";
+import { useMixcloudArchive } from "contexts/mixcloud";
 import { bulletItem } from "utils/functions";
 
 type TracklistItemProps = {
@@ -26,7 +26,7 @@ const TracklistItem = ({
   startTime,
   trackName,
 }: TracklistItemProps): JSX.Element => {
-  const { duration, seekTo } = useMixcloud();
+  const { duration, seekTo } = useMixcloudArchive();
 
   return (
     <StyledTracklistItem

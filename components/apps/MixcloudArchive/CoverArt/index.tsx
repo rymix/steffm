@@ -3,12 +3,12 @@
 import axios from "axios";
 import StyledCoverArt from "components/apps/MixcloudArchive/CoverArt/StyledCoverArt";
 import type { Mix, Track } from "components/apps/MixcloudArchive/types";
-import { useMixcloud } from "contexts/mixcloud";
+import { useMixcloudArchive } from "contexts/mixcloud";
 import { Fragment, useState } from "react";
 import { hmsToMs } from "utils/functions";
 
 const CoverArt = (): JSX.Element => {
-  const { getMixByMixcloudKey, mixes } = useMixcloud();
+  const { getMixByMixcloudKey, mixes } = useMixcloudArchive();
   const [thisMixcloudKey, setThisMixcloudKey] = useState(
     "adventures-in-decent-music-volume-37"
   );

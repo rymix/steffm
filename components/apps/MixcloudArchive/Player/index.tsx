@@ -2,12 +2,13 @@ import axios from "axios";
 import { mixcloudUrlify } from "components/apps/MixcloudArchive/functions";
 import MixCard from "components/apps/MixcloudArchive/MixCard";
 import StyledPlayer from "components/apps/MixcloudArchive/Player/StyledPlayer";
-import useMixcloudWindowSize from "components/apps/MixcloudArchive/useMixcloudWindowSize";
-import { useMixcloud } from "contexts/mixcloud";
+import { useMixcloudArchive } from "contexts/mixcloud";
 import { useProcesses } from "contexts/process";
 import type { LegacyRef } from "react";
 import { useEffect, useRef, useState } from "react";
 import ReactPlayer from "react-player";
+
+import useMixcloudWindowSize from "../useMixcloudWindowSize";
 
 const MixcloudPlayer = (): JSX.Element => {
   const {
@@ -21,7 +22,7 @@ const MixcloudPlayer = (): JSX.Element => {
     setPlaying,
     setReady,
     volume,
-  } = useMixcloud();
+  } = useMixcloudArchive();
   const {
     processes: { [mixcloudKey]: { url: initialUrl = "" } = {} },
   } = useProcesses();

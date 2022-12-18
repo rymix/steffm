@@ -1,9 +1,9 @@
 import StyledMixCard from "components/apps/MixcloudArchive/MixCard/StyledMixCard";
-import { useMixcloud } from "contexts/mixcloud";
+import { useMixcloudArchive } from "contexts/mixcloud";
 import { bulletItem } from "utils/functions";
 
 const MixCard = (): JSX.Element => {
-  const { getMixByMixcloudKey, mixcloudKey } = useMixcloud();
+  const { getMixByMixcloudKey, mixcloudKey } = useMixcloudArchive();
 
   return (
     <>

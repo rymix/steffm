@@ -1,12 +1,12 @@
 import StyledMixesAndTracksSearchBox from "components/apps/MixcloudArchive/MixesAndTracksSearchBox/StyledMixesAndTracksSearchBox";
 import type { Mix } from "components/apps/MixcloudArchive/types";
-import { useMixcloud } from "contexts/mixcloud";
+import { useMixcloudArchive } from "contexts/mixcloud";
 import { useRef } from "react";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { bulletItem } from "utils/functions";
 
 const MixesAndTracksSearchBox = (): JSX.Element => {
-  const { mixes, setMixcloudKey } = useMixcloud();
+  const { mixes, setMixcloudKey } = useMixcloudArchive();
   const resultsBoxRef = useRef<HTMLDivElement>(null);
   const resultsBoxWidth: number | undefined =
     resultsBoxRef?.current?.getBoundingClientRect().width;
