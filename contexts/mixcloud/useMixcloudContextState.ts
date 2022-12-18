@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import type { Mix } from "components/apps/Mixcloud/types";
+import type { Mix } from "components/apps/MixcloudArchive/types";
 import { useFileSystem } from "contexts/fileSystem";
 import { unzip } from "fflate";
 import type React from "react";

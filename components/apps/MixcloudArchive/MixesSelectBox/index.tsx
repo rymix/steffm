@@ -1,4 +1,4 @@
-import StyledMixesSelectBox from "components/apps/Mixcloud/MixesSelectBox/StyledMixesSelectBox";
+import StyledMixesSelectBox from "components/apps/MixcloudArchive/MixesSelectBox/StyledMixesSelectBox";
 import { useMixcloud } from "contexts/mixcloud";
 
 const MixesSelecBox = (): JSX.Element => {

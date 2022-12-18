@@ -1,5 +1,5 @@
-import { startTimeToIndex } from "components/apps/Mixcloud/functions";
-import StyledTracklistItem from "components/apps/Mixcloud/MixDetail/StyledTracklistItem";
+import { startTimeToIndex } from "components/apps/MixcloudArchive/functions";
+import StyledTracklistItem from "components/apps/MixcloudArchive/MixDetail/StyledTracklistItem";
 import { useMixcloud } from "contexts/mixcloud";
 import { bulletItem } from "utils/functions";
 

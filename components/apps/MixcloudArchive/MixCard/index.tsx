@@ -1,4 +1,4 @@
-import StyledMixCard from "components/apps/Mixcloud/MixCard/StyledMixCard";
+import StyledMixCard from "components/apps/MixcloudArchive/MixCard/StyledMixCard";
 import { useMixcloud } from "contexts/mixcloud";
 import { bulletItem } from "utils/functions";
 

@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import axios from "axios";
-import StyledCoverArt from "components/apps/Mixcloud/CoverArt/StyledCoverArt";
-import type { Mix, Track } from "components/apps/Mixcloud/types";
+import StyledCoverArt from "components/apps/MixcloudArchive/CoverArt/StyledCoverArt";
+import type { Mix, Track } from "components/apps/MixcloudArchive/types";
 import { useMixcloud } from "contexts/mixcloud";
 import { Fragment, useState } from "react";
 import { hmsToMs } from "utils/functions";

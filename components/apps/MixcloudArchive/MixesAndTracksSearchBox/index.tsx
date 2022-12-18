@@ -1,5 +1,5 @@
-import StyledMixesAndTracksSearchBox from "components/apps/Mixcloud/MixesAndTracksSearchBox/StyledMixesAndTracksSearchBox";
-import type { Mix } from "components/apps/Mixcloud/types";
+import StyledMixesAndTracksSearchBox from "components/apps/MixcloudArchive/MixesAndTracksSearchBox/StyledMixesAndTracksSearchBox";
+import type { Mix } from "components/apps/MixcloudArchive/types";
 import { useMixcloud } from "contexts/mixcloud";
 import { useRef } from "react";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";

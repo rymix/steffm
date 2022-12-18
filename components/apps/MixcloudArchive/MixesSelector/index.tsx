@@ -1,6 +1,6 @@
-import MixesSearchBox from "components/apps/Mixcloud/MixesAndTracksSearchBox";
-import MixesSelectBox from "components/apps/Mixcloud/MixesSelectBox";
-import StyledMixesSelector from "components/apps/Mixcloud/MixesSelector/StyledMixesSelector";
+import MixesSearchBox from "components/apps/MixcloudArchive/MixesAndTracksSearchBox";
+import MixesSelectBox from "components/apps/MixcloudArchive/MixesSelectBox";
+import StyledMixesSelector from "components/apps/MixcloudArchive/MixesSelector/StyledMixesSelector";
 
 const MixesSelector = (): JSX.Element => {
   return (

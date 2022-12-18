@@ -1,4 +1,4 @@
-import StyledSystemTrayControls from "components/apps/Mixcloud/SystemTrayControls/StyledSystemTrayControls";
+import StyledSystemTrayControls from "components/apps/MixcloudArchive/SystemTrayControls/StyledSystemTrayControls";
 import { useMixcloud } from "contexts/mixcloud";
 import { useProcesses } from "contexts/process";
 import Button from "styles/common/Button";

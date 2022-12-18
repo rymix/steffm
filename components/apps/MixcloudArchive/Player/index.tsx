@@ -1,8 +1,8 @@
 import axios from "axios";
-import { mixcloudUrlify } from "components/apps/Mixcloud/functions";
-import MixCard from "components/apps/Mixcloud/MixCard";
-import StyledPlayer from "components/apps/Mixcloud/Player/StyledPlayer";
-import useMixcloudWindowSize from "components/apps/Mixcloud/useMixcloudWindowSize";
+import { mixcloudUrlify } from "components/apps/MixcloudArchive/functions";
+import MixCard from "components/apps/MixcloudArchive/MixCard";
+import StyledPlayer from "components/apps/MixcloudArchive/Player/StyledPlayer";
+import useMixcloudWindowSize from "components/apps/MixcloudArchive/useMixcloudWindowSize";
 import { useMixcloud } from "contexts/mixcloud";
 import { useProcesses } from "contexts/process";
 import type { LegacyRef } from "react";

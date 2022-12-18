@@ -1,5 +1,5 @@
-import StyledDebug from "components/apps/Mixcloud/Debug/StyledDebug";
-import Duration from "components/apps/Mixcloud/Duration";
+import StyledDebug from "components/apps/MixcloudArchive/Debug/StyledDebug";
+import Duration from "components/apps/MixcloudArchive/Duration";
 import { useMixcloud } from "contexts/mixcloud";
 
 const Debug = (): JSX.Element => {

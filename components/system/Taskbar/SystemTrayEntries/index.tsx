@@ -1,4 +1,4 @@
-import StyledSystemTrayControls from "components/apps/Mixcloud/SystemTrayControls/StyledSystemTrayControls";
+import StyledSystemTrayControls from "components/apps/MixcloudArchive/SystemTrayControls/StyledSystemTrayControls";
 import StyledSystemTrayEntries from "components/system/Taskbar/SystemTrayEntries/StyledSystemTrayEntries";
 import { AnimatePresence } from "framer-motion";
 import dynamic from "next/dynamic";

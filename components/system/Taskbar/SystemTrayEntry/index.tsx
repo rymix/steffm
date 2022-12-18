@@ -1,4 +1,4 @@
-import SystemTrayControls from "components/apps/Mixcloud/SystemTrayControls";
+import SystemTrayControls from "components/apps/MixcloudArchive/SystemTrayControls";
 import StyledSystemTrayEntry from "components/system/Taskbar/SystemTrayEntry/StyledSystemTrayEntry";
 import type { FC } from "react";
 
