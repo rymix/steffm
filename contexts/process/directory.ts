@@ -131,6 +131,17 @@ const directory: Processes = {
     ],
     title: "Marked",
   },
+  Mixcloud: {
+    Component: dynamic(() => import("components/apps/Mixcloud")),
+    backgroundColor: "#0099ff",
+    defaultSize: {
+      height: 200,
+      width: 320,
+    },
+    icon: "/System/Icons/mixcloud",
+    singleton: true,
+    title: "Mixcloud",
+  },
   MixcloudCoverArt: {
     Component: dynamic(
       () => import("components/apps/MixcloudArchive/CoverArt")
