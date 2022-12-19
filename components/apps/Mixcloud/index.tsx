@@ -1,13 +1,22 @@
-import AppContainer from "components/apps/AppContainer";
-import StyledMixcloud from "components/apps/Mixcloud/StyledMixcloud";
 import type { ComponentProcessProps } from "components/system/Apps/RenderComponent";
-// import useMixcloud from "components/apps/Mixcloud/useMixcloud";
-import { useMixcloud } from "contexts/mixcloud";
+import useMixcloudContextState from "contexts/mixcloud/useMixcloudContextState";
+import Button from "styles/common/Button";
 
-const Mixcloud: FC<ComponentProcessProps> = ({ id }) => (
-  <AppContainer StyledComponent={StyledMixcloud} id={id} useHook={useMixcloud}>
-    <div>Hello World</div>
-  </AppContainer>
-);
+import StyledMixcloud from "./StyledMixcloud";
+
+const Mixcloud: FC<ComponentProcessProps> = ({ id }) => {
+  const { loading, setLoading, url } = useMixcloudContextState();
+
+  return (
+    <StyledMixcloud>
+      <Button onClick={() => setLoading(true)} type="button">
+        setLoading false
+      </Button>
+      <p>id: {id}</p>
+      <p>url: {url}</p>
+      <p>loading: {loading ? "true" : "false"}</p>
+    </StyledMixcloud>
+  );
+};
 
 export default Mixcloud;

@@ -1,8 +1,6 @@
-import contextFactoryGlobalApp from "contexts/contextFactoryGlobalApp";
+import contextFactory from "contexts/contextFactory";
 import useMixcloudContextState from "contexts/mixcloud/useMixcloudContextState";
 
-const { Provider, useContext } = contextFactoryGlobalApp(
-  useMixcloudContextState
-);
+const { Provider, useContext } = contextFactory(useMixcloudContextState);
 
-export { Provider as SessionProvider, useContext as useMixcloud };
+export { Provider as MixcloudProvider, useContext as useMixcloud };
