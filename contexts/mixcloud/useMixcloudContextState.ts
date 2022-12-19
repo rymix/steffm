@@ -23,8 +23,8 @@ const useMixcloudContextState = (): MixcloudContextState => {
   // console.log("setLoading", setLoading);
   // console.log("loading", loading);
 
-  const id = "Mixcloud";
-  const url = "farts";
+  const id = "Mixcloud"; // Hard coded this as I can't work out how to pass it as a parameter
+  const url = "url";
   const containerRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(true);
   const [ready, setReady] = useState(false);
