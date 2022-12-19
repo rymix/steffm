@@ -11,12 +11,12 @@ export type ContextFactoryOptionalProps = {
   url: string;
 };
 
-export type MixcloudContextStateProps = ContextFactoryOptionalProps & {
+export type MixcloudContextState = ContextFactoryOptionalProps & {
   ready?: boolean;
   setReady?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const useMixcloudContextState = (): MixcloudContextStateProps => {
+const useMixcloudContextState = (): MixcloudContextState => {
   // console.log("id", id);
   // console.log("url", url);
   // console.log("containerRef", containerRef);
