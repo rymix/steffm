@@ -1,6 +1,6 @@
 import StyledDebug from "components/apps/Mixcloud/Debug/StyledDebug";
 import Duration from "components/apps/Mixcloud/Duration";
-import { useMixcloudArchive } from "contexts/mixcloudArchive";
+import { useMixcloud } from "contexts/mixcloud";
 
 const Debug = (): JSX.Element => {
   const {
@@ -20,7 +20,7 @@ const Debug = (): JSX.Element => {
     setMixcloudKey,
     ready,
     volume,
-  } = useMixcloudArchive();
+  } = useMixcloud();
 
   const renderLoadButton = (key: string, label: string): JSX.Element => {
     return (
