@@ -3,39 +3,34 @@ import { useProcesses } from "contexts/process";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { loadFiles } from "utils/functions";
 
-export type ContextFactoryOptionalProps = {
+export type MixcloudContextState = {
   containerRef: React.MutableRefObject<HTMLDivElement | null>;
-  id: string;
+  idControls: string;
+  idPlayer: string;
   loading: boolean;
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  url: string;
-};
-
-export type MixcloudContextState = ContextFactoryOptionalProps & {
   ready?: boolean;
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
   setReady?: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const useMixcloudContextState = (): MixcloudContextState => {
-  // console.log("id", id);
-  // console.log("url", url);
-  // console.log("containerRef", containerRef);
-  // console.log("setLoading", setLoading);
-  // console.log("loading", loading);
-
-  const id = "Mixcloud"; // Hard coded this as I can't work out how to pass it as a parameter
-  const url = "url";
   const containerRef = useRef<HTMLDivElement>(null);
+  const idControls = "MixcloudControls"; // Hard coded this as I can't work out how to pass it as a parameter
+  const idPlayer = "Mixcloud";
   const [loading, setLoading] = useState(true);
   const [ready, setReady] = useState(false);
   const {
-    processes: { [id]: { closing = false, libs = [] } = {} },
+    processes: {
+      [idPlayer]: { closing: closingPlayer = false, libs = [] } = {},
+    },
   } = useProcesses();
   const [mixcloudPlayer, setMixcloudPlayer] = useState(false);
   const loadMixcloudPlayer = useCallback(() => {
     setMixcloudPlayer(true);
-    setLoading(false);
-  }, [setLoading]);
+    if (ready) {
+      setLoading(false);
+    }
+  }, [ready, setLoading]);
 
   useEffect(() => {
     if (loading && !mixcloudPlayer) {
@@ -45,20 +40,20 @@ const useMixcloudContextState = (): MixcloudContextState => {
     }
 
     return () => {
-      if (closing) {
-        console.log("Gonna close", id);
+      if (closingPlayer) {
+        console.log("Gonna close", idPlayer);
       }
     };
-  }, [closing, id, libs, loadMixcloudPlayer, loading, mixcloudPlayer]);
+  }, [closingPlayer, libs, loadMixcloudPlayer, loading, mixcloudPlayer]);
 
   return {
     containerRef,
-    id,
+    idControls,
+    idPlayer,
     loading,
     ready,
     setLoading,
     setReady,
-    url,
   };
 };
 
