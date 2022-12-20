@@ -1,10 +1,12 @@
 /* eslint-disable no-console */
+import MixDetail from "components/apps/Mixcloud/MixDetail";
+import MixesSelector from "components/apps/Mixcloud/MixesSelector";
+import MixHeader from "components/apps/Mixcloud/MixHeader";
+import Player from "components/apps/Mixcloud/Player";
+import StyledMixcloud from "components/apps/Mixcloud/StyledMixcloud";
 import type { ComponentProcessProps } from "components/system/Apps/RenderComponent";
 import StyledLoading from "components/system/Files/FileManager/StyledLoading";
 import { useMixcloud } from "contexts/mixcloud";
-import Button from "styles/common/Button";
-
-import StyledMixcloud from "./StyledMixcloud";
 
 const Mixcloud: FC<ComponentProcessProps> = ({ id }) => {
   const { loading, setLoading } = useMixcloud();
@@ -13,11 +15,10 @@ const Mixcloud: FC<ComponentProcessProps> = ({ id }) => {
     <>
       {loading && <StyledLoading />}
       <StyledMixcloud>
-        <Button onClick={() => setLoading(false)} type="button">
-          setLoading false
-        </Button>
-        <p>id: {id}</p>
-        <p>loading: {loading ? "true" : "false"}</p>
+        <MixesSelector />
+        <Player />
+        <MixHeader />
+        <MixDetail />
       </StyledMixcloud>
     </>
   );
