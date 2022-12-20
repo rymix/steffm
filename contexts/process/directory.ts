@@ -143,9 +143,7 @@ const directory: Processes = {
     title: "Mixcloud",
   },
   MixcloudCoverArt: {
-    Component: dynamic(
-      () => import("components/apps/MixcloudArchive/CoverArt")
-    ),
+    Component: dynamic(() => import("components/apps/Mixcloud/CoverArt")),
     backgroundColor: "#ffffff",
     defaultSize: {
       height: 200,
@@ -156,22 +154,11 @@ const directory: Processes = {
     title: "Mixcloud CoverArt",
   },
   MixcloudDebug: {
-    Component: dynamic(() => import("components/apps/MixcloudArchive/Debug")),
+    Component: dynamic(() => import("components/apps/Mixcloud/Debug")),
     backgroundColor: "#ffffff",
     icon: "/System/Icons/mixcloud",
     singleton: true,
     title: "Mixcloud Debug",
-  },
-  MixcloudPlayer: {
-    Component: dynamic(() => import("components/apps/MixcloudArchive")),
-    backgroundColor: "#ffffff",
-    defaultSize: {
-      height: 480,
-      width: 640,
-    },
-    icon: "/System/Icons/mixcloud",
-    singleton: true,
-    title: "Mixcloud Player",
   },
   MonacoEditor: {
     Component: dynamic(() => import("components/apps/MonacoEditor")),

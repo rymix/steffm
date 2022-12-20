@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-console */
-import type { Mix } from "components/apps/MixcloudArchive/types";
+import type { Mix } from "components/apps/Mixcloud/types";
 import { useFileSystem } from "contexts/fileSystem";
 import { useProcesses } from "contexts/process";
 import { unzip } from "fflate";

@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import axios from "axios";
-import StyledCoverArt from "components/apps/MixcloudArchive/CoverArt/StyledCoverArt";
-import type { Mix, Track } from "components/apps/MixcloudArchive/types";
-import { useMixcloudArchive } from "contexts/mixcloudArchive";
+import StyledCoverArt from "components/apps/Mixcloud/CoverArt/StyledCoverArt";
+import type { Mix, Track } from "components/apps/Mixcloud/types";
+import { useMixcloud } from "contexts/mixcloud";
 import { Fragment, useState } from "react";
 import { hmsToMs } from "utils/functions";
 
 const CoverArt = (): JSX.Element => {
-  const { getMixByMixcloudKey, mixes } = useMixcloudArchive();
+  const { getMixByMixcloudKey, mixes } = useMixcloud();
   const [thisMixcloudKey, setThisMixcloudKey] = useState(
     "adventures-in-decent-music-volume-37"
   );

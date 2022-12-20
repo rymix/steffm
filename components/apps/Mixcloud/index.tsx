@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import MixDetail from "components/apps/Mixcloud/MixDetail";
 import MixesSelector from "components/apps/Mixcloud/MixesSelector";
 import MixHeader from "components/apps/Mixcloud/MixHeader";
@@ -8,8 +7,8 @@ import type { ComponentProcessProps } from "components/system/Apps/RenderCompone
 import StyledLoading from "components/system/Files/FileManager/StyledLoading";
 import { useMixcloud } from "contexts/mixcloud";
 
-const Mixcloud: FC<ComponentProcessProps> = ({ id }) => {
-  const { loading, setLoading } = useMixcloud();
+const Mixcloud: FC<ComponentProcessProps> = () => {
+  const { loading } = useMixcloud();
 
   return (
     <>
