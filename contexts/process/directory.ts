@@ -133,7 +133,7 @@ const directory: Processes = {
   },
   Mixcloud: {
     Component: dynamic(() => import("components/apps/Mixcloud")),
-    backgroundColor: "#0099ff",
+    backgroundColor: "#ffffff",
     defaultSize: {
       height: 200,
       width: 320,
