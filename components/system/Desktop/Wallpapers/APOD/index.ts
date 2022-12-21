@@ -48,10 +48,16 @@ const Apod = async (
 
       if (hdurl || url) {
         wallpaperUrl = ((viewWidth() > 1024 ? hdurl : url) || url) as string;
+        const image = new Image();
+        image.src = wallpaperUrl;
+        image.addEventListener("load", () => {
+          console.log(image.height);
+          console.log(image.width);
+        });
         const newWallpaperImage = `APOD ${wallpaperUrl} ${date as string}`;
         const imgContainer = document.createElement("div");
         imgContainer.setAttribute("id", "imgContainer");
-        imgContainer.innerHTML = `<img src=${wallpaperUrl} alt=${newWallpaperImage} />`;
+        imgContainer.innerHTML = `<img src=${image.src} alt=${newWallpaperImage} />`;
         div.append(imgContainer);
       }
 
