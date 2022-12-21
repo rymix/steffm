@@ -8,15 +8,19 @@ const StyledMixDetail = styled.div`
   ol {
     flex: 1 1 auto;
     flex-flow: column;
-    height: 100%;
+    height: calc(100% - 295px);
     overflow-y: scroll;
     padding: 25px 0;
     width: 100%;
 
+    & * {
+      cursor: pointer;
+    }
+
     &::after {
       background: linear-gradient(180deg, #fff, transparent);
       content: close-quote;
-      height: 50px;
+      height: 30px;
       left: 0;
       pointer-events: none;
       position: absolute;
@@ -27,9 +31,9 @@ const StyledMixDetail = styled.div`
 
     &::before {
       background: linear-gradient(0deg, #fff, transparent);
-      bottom: 0;
+      bottom: 295px;
       content: close-quote;
-      height: 50px;
+      height: 30px;
       left: 0;
       pointer-events: none;
       position: absolute;
