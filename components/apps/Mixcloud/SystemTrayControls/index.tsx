@@ -1,20 +1,37 @@
 import StyledSystemTrayControls from "components/apps/Mixcloud/SystemTrayControls/StyledSystemTrayControls";
+import useNextFocusable from "components/system/Window/useNextFocusable";
 import { useMixcloud } from "contexts/mixcloud";
 import { useProcesses } from "contexts/process";
+import { useSession } from "contexts/session";
 import Button from "styles/common/Button";
 import Icon from "styles/common/Icon";
 
 const SystemTrayControls = (): JSX.Element => {
   const { playing, ready, setPlaying } = useMixcloud();
-  const { open } = useProcesses();
+  const {
+    open,
+    maximize,
+    minimize,
+    processes: {
+      Mixcloud: { closing = false, maximized = false, minimized = false } = {},
+    } = {},
+  } = useProcesses();
+  const id = "Mixcloud";
+  const { foregroundId, setForegroundId } = useSession();
+  const isForeground = id === foregroundId;
+  const nextFocusableId = useNextFocusable(id);
+
   const playPauseToggle = (): void => {
-    if (!ready) open("MixcloudPlayer");
+    if (!ready) open(id);
 
     if (playing) {
       setPlaying(false);
     } else {
       setPlaying(true);
     }
+
+    if (minimized || isForeground) minimize(id);
+    setForegroundId(isForeground ? nextFocusableId : id);
   };
 
   return (

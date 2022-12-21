@@ -121,6 +121,8 @@ const useMixcloudContextState = (): MixcloudContextState => {
     return () => {
       if (closingPlayer) {
         console.log("Gonna close", idPlayer);
+        setReady(false);
+        setPlaying(false);
       }
     };
   }, [closingPlayer, libs, loadMixcloudPlayer, loading, mixcloudPlayer]);
