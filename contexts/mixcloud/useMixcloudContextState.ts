@@ -108,6 +108,7 @@ const useMixcloudContextState = (): MixcloudContextState => {
     setMixcloudPlayer(true);
     if (ready) {
       setLoading(false);
+      setPlaying(true);
     }
   }, [ready, setLoading]);
 
