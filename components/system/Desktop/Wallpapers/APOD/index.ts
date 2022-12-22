@@ -38,31 +38,31 @@ const Apod = async (
 
     const initApod = async (): Promise<void> => {
       let wallpaperUrl;
-      const {
-        date = "",
-        hdurl = "",
-        url = "",
-      } = await jsonFetch(
+      await jsonFetch(
         "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY"
-      );
+      ).then((response) => {
+        const { hdurl, url } = response;
 
-      if (hdurl || url) {
-        wallpaperUrl = ((viewWidth() > 1024 ? hdurl : url) || url) as string;
-        const image = new Image();
-        image.src = wallpaperUrl;
-        image.addEventListener("load", () => {
-          console.log(image.height);
-          console.log(image.width);
-        });
-        const newWallpaperImage = `APOD ${wallpaperUrl} ${date as string}`;
-        const imgContainer = document.createElement("div");
-        imgContainer.setAttribute("id", "imgContainer");
-        imgContainer.innerHTML = `<img src=${image.src} alt=${newWallpaperImage} />`;
-        div.append(imgContainer);
-      }
+        if (hdurl || url) {
+          wallpaperUrl = ((viewWidth() > 1024 ? hdurl : url) || url) as string;
+          const image = new Image();
+          image.src = wallpaperUrl;
+          const imgContainer = document.createElement("div");
+          imgContainer.setAttribute("id", "imgContainer");
+          imgContainer.setAttribute(
+            "style",
+            `background: url(${wallpaperUrl}); background-size: cover; height: 100%; width: 100%;`
+          );
+          div.append(imgContainer);
+          // console.log("image.height", image.height);
+          // console.log("image.width", image.width);
+          // console.log("window.innerHeight", window.innerHeight);
+          // console.log("window.innerWidth", window.innerWidth);
+        }
 
-      // eslint-disable-next-line consistent-return, unicorn/no-useless-promise-resolve-reject
-      return Promise.resolve();
+        // eslint-disable-next-line consistent-return, unicorn/no-useless-promise-resolve-reject
+        return Promise.resolve();
+      });
     };
 
     let debounce: ReturnType<typeof setTimeout>;
