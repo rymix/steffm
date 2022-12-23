@@ -2,6 +2,7 @@ import type { WallpaperConfig } from "components/system/Desktop/Wallpapers/types
 import {
   disableControls,
   libs,
+  nightColors,
 } from "components/system/Desktop/Wallpapers/vantaClouds/config";
 import type { VantaCloudsConfig } from "components/system/Desktop/Wallpapers/vantaClouds/types";
 import { loadFiles } from "utils/functions";
@@ -27,6 +28,7 @@ const vantaClouds = (
       CLOUDS({
         el,
         ...disableControls,
+        ...nightColors,
         ...(config as VantaCloudsConfig),
       });
     }

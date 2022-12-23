@@ -2,6 +2,7 @@ import type { OffscreenRenderProps } from "components/system/Desktop/Wallpapers/
 import {
   config,
   libs,
+  nightColors,
 } from "components/system/Desktop/Wallpapers/vantaClouds/config";
 import type {
   VantaClouds,
@@ -43,6 +44,7 @@ globalThis.addEventListener(
       cloudEffect = CLOUDS({
         ...(config || offscreenConfig),
         canvas,
+        ...nightColors,
         devicePixelRatio,
       });
     }

@@ -1,19 +1,21 @@
 import type { OffscreenRenderProps } from "components/system/Desktop/Wallpapers/types";
 
-export type VantaCloudsConfig = {
-  // backgroundColor: { space: string; values: number[] };
+export type cloudColors = {
   cloudColor: number;
   cloudShadowColor: number;
+  skyColor: number;
+  sunColor: number;
+  sunGlareColor: number;
+  sunlightColor: number;
+};
+
+export type VantaCloudsConfig = {
   gyroControls: boolean;
   mouseControls: boolean;
   mouseEase: boolean;
   scale?: number;
   scaleMobile?: number;
-  skyColor: number;
   speed?: number;
-  sunColor: number;
-  sunGlareColor: number;
-  sunlightColor: number;
   touchControls: boolean;
 };
 
