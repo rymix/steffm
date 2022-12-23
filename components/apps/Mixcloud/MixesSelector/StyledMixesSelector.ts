@@ -5,15 +5,20 @@ const StyledMixesSelector = styled.div`
   background: #ccc;
   display: grid;
   grid-template-columns: repeat(2, 50%);
-  height: 75px;
+  height: 110px;
   width: 100%;
 
+  #category-wrapper {
+    padding: 5px 10px;
+  }
+
   #select-wrapper {
-    padding: 0 10px;
+    padding: 5px 10px;
   }
 
   #search-wrapper {
-    padding: 0 10px;
+    grid-column: 1 / span 2;
+    padding: 5px 10px;
   }
 `;
 

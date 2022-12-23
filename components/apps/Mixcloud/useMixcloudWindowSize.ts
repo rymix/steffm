@@ -1,4 +1,4 @@
-import playerDimensions from "components/apps/Mixcloud/config";
+import { playerDimensions } from "components/apps/Mixcloud/config";
 import useWindowSize from "components/system/Window/useWindowSize";
 import { useEffect } from "react";
 

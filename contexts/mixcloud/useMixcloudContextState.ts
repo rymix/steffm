@@ -51,6 +51,7 @@ export type MixcloudContextState = {
   ready: boolean;
   seekTo: (jumpPoint: number) => void;
   seeking: boolean;
+  selectedCategory: string;
   setCurrentTrackDiv: React.Dispatch<
     React.SetStateAction<HTMLDivElement | undefined>
   >;
@@ -67,6 +68,7 @@ export type MixcloudContextState = {
   setRandomUnplayedMix: (category?: string) => void;
   setReady: React.Dispatch<React.SetStateAction<boolean>>;
   setSeeking: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
   setVolumeChange: React.Dispatch<React.SetStateAction<boolean>>;
   volume: number;
   volumeChange: boolean;
@@ -100,6 +102,7 @@ const useMixcloudContextState = (): MixcloudContextState => {
   const [playing, setPlaying] = useState(false);
   const [progressLog, setProgressLog] = useState<ProgressLog[]>([]);
   const [seeking, setSeeking] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("all");
   const [ready, setReady] = useState(false);
   const [volume, setVolume] = useState(1);
   const [volumeChange, setVolumeChange] = useState(false);
@@ -349,6 +352,7 @@ const useMixcloudContextState = (): MixcloudContextState => {
     ready,
     seekTo,
     seeking,
+    selectedCategory,
     setCurrentTrackDiv,
     setDuration,
     setLoadedProgress,
@@ -363,6 +367,7 @@ const useMixcloudContextState = (): MixcloudContextState => {
     setRandomUnplayedMix,
     setReady,
     setSeeking,
+    setSelectedCategory,
     setVolumeChange,
     volume,
     volumeChange,
