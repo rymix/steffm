@@ -10,11 +10,8 @@ const SystemTrayControls = (): JSX.Element => {
   const { playing, ready, setPlaying } = useMixcloud();
   const {
     open,
-    maximize,
     minimize,
-    processes: {
-      Mixcloud: { closing = false, maximized = false, minimized = false } = {},
-    } = {},
+    processes: { Mixcloud: { minimized = false } = {} } = {},
   } = useProcesses();
   const id = "Mixcloud";
   const { foregroundId, setForegroundId } = useSession();
@@ -43,7 +40,6 @@ const SystemTrayControls = (): JSX.Element => {
             imgSize={24}
             src={playing ? "/System/Icons/pause" : "/System/Icons/play"}
           />
-          {playing ? "Y" : "N"}
         </figure>
       </Button>
     </StyledSystemTrayControls>

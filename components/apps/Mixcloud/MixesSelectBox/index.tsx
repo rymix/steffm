@@ -4,7 +4,7 @@ import { useMixcloud } from "contexts/mixcloud";
 const MixesSelecBox = (): JSX.Element => {
   const { mixes, mixcloudKey, selectedCategory, setMixcloudKey } =
     useMixcloud();
-  const showAllCategories = () =>
+  const showAllCategories = (): JSX.Element[] =>
     mixes.map((mix) => (
       <option
         key={mix.mixcloudKey}
@@ -14,7 +14,7 @@ const MixesSelecBox = (): JSX.Element => {
         {mix.name}
       </option>
     ));
-  const showFilteredCategories = () =>
+  const showFilteredCategories = (): JSX.Element[] =>
     mixes
       .filter((mix) => mix.category === selectedCategory)
       .map((mix) => (
@@ -29,8 +29,6 @@ const MixesSelecBox = (): JSX.Element => {
 
   return (
     <StyledMixesSelectBox onChange={(e) => setMixcloudKey(e.target.value)}>
-      <option value="Select">Select</option>
-
       {selectedCategory === "all"
         ? showAllCategories()
         : showFilteredCategories()}
