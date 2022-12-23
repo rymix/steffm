@@ -54,15 +54,11 @@ const Apod = async (
             `background: url(${wallpaperUrl}); background-size: cover; height: 100%; width: 100%;`
           );
           div.append(imgContainer);
-          // console.log("image.height", image.height);
-          // console.log("image.width", image.width);
-          // console.log("window.innerHeight", window.innerHeight);
-          // console.log("window.innerWidth", window.innerWidth);
         }
-
-        // eslint-disable-next-line consistent-return, unicorn/no-useless-promise-resolve-reject
-        return Promise.resolve();
       });
+
+      // eslint-disable-next-line unicorn/no-useless-promise-resolve-reject
+      return Promise.resolve();
     };
 
     let debounce: ReturnType<typeof setTimeout>;
@@ -78,9 +74,6 @@ const Apod = async (
     window.addEventListener("resize", resize);
 
     initApod();
-
-    // eslint-disable-next-line consistent-return, unicorn/no-useless-promise-resolve-reject
-    return Promise.resolve();
   };
 
   await window.Apod?.(apodContainer, { ...apodConfig, ...config });
