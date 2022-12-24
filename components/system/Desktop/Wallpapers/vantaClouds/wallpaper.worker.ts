@@ -9,6 +9,8 @@ import type {
   VantaCloudsObject,
 } from "components/system/Desktop/Wallpapers/vantaClouds/types";
 
+import colorCycle from "./dayNightCycle";
+
 declare global {
   // eslint-disable-next-line vars-on-top, no-var
   var VANTACLOUDS: VantaCloudsObject;
@@ -47,6 +49,12 @@ globalThis.addEventListener(
         ...nightColors,
         devicePixelRatio,
       });
+
+      const { stop: stopColorCycle } = colorCycle((incomingColors) =>
+        cloudEffect.setOptions(incomingColors)
+      );
+
+      cloudEffect.onDestroy = stopColorCycle;
     }
   },
   { passive: true }

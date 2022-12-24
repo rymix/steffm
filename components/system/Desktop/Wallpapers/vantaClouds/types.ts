@@ -32,10 +32,12 @@ type VantaCloudsSettings = RenderProps &
 
 export type VantaClouds = {
   destroy: () => void;
+  onDestroy: () => void;
   renderer: {
     setSize: (width: number, height: number) => void;
   };
   resize: () => void;
+  setOptions: (settings: Partial<cloudColors>) => void;
 };
 
 export type VantaCloudsObject = {
