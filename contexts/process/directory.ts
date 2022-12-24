@@ -322,6 +322,17 @@ const directory: Processes = {
     singleton: true,
     title: "Vim",
   },
+  WallpaperSwitcher: {
+    Component: dynamic(() => import("components/apps/WallpaperSwitcher")),
+    allowResizing: false,
+    defaultSize: {
+      height: 448,
+      width: 595,
+    },
+    icon: "/System/Icons/pc.webp",
+    singleton: true,
+    title: "WallpaperSwitcher",
+  },
   Webamp: {
     Component: dynamic(() => import("components/apps/Webamp")),
     allowResizing: false,
