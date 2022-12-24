@@ -56,9 +56,6 @@ const Apod = async (
           div.append(imgContainer);
         }
       });
-
-      // eslint-disable-next-line unicorn/no-useless-promise-resolve-reject
-      return Promise.resolve();
     };
 
     let debounce: ReturnType<typeof setTimeout>;
@@ -74,6 +71,8 @@ const Apod = async (
     window.addEventListener("resize", resize);
 
     initApod();
+
+    return Promise.resolve();
   };
 
   await window.Apod?.(apodContainer, { ...apodConfig, ...config });
