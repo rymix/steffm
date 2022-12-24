@@ -179,13 +179,19 @@ const useFolderContextMenu = (
                       toggle: wallpaperImage === "TARTAN",
                     },
                     {
-                      action: () => setWallpaper("VANTACLOUDS"),
-                      label: `Vanta Clouds${
-                        wallpaperImage === "VANTACLOUDS WIREFRAME"
-                          ? " (Wireframe)"
-                          : ""
-                      }`,
-                      toggle: wallpaperImage.startsWith("VANTACLOUDS"),
+                      action: () => setWallpaper("VANTACLOUDSDAY"),
+                      label: "Vanta Clouds (Day)",
+                      toggle: wallpaperImage.startsWith("VANTACLOUDSDAY"),
+                    },
+                    {
+                      action: () => setWallpaper("VANTACLOUDSNIGHT"),
+                      label: "Vanta Clouds (Night)",
+                      toggle: wallpaperImage.startsWith("VANTACLOUDSNIGHT"),
+                    },
+                    {
+                      action: () => setWallpaper("VANTACLOUDSCYCLE"),
+                      label: "Vanta Clouds (Day/Night Cycle)",
+                      toggle: wallpaperImage.startsWith("VANTACLOUDSCYCLE"),
                     },
                     {
                       action: () => setWallpaper("VANTAWAVES"),

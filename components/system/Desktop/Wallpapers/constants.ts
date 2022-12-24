@@ -34,13 +34,33 @@ export const WALLPAPER_WORKERS: Record<string, (info?: string) => Worker> = {
       ),
       { name: "Wallpaper (Coastal Landscape)" }
     ),
-  VANTACLOUDS: (info?: string): Worker =>
+  VANTACLOUDSCYCLE: (info?: string): Worker =>
     new Worker(
       new URL(
-        "components/system/Desktop/Wallpapers/vantaClouds/wallpaper.worker",
+        "components/system/Desktop/Wallpapers/vantaClouds/wallpaper.worker.cycle",
         import.meta.url
       ),
-      { name: `Wallpaper (Vanta Clouds)${info ? ` [${info}]` : ""}` }
+      {
+        name: `Wallpaper (Vanta Clouds Day/Night Cycle)${
+          info ? ` [${info}]` : ""
+        }`,
+      }
+    ),
+  VANTACLOUDSDAY: (info?: string): Worker =>
+    new Worker(
+      new URL(
+        "components/system/Desktop/Wallpapers/vantaClouds/wallpaper.worker.day",
+        import.meta.url
+      ),
+      { name: `Wallpaper (Vanta Clouds Day)${info ? ` [${info}]` : ""}` }
+    ),
+  VANTACLOUDSNIGHT: (info?: string): Worker =>
+    new Worker(
+      new URL(
+        "components/system/Desktop/Wallpapers/vantaClouds/wallpaper.worker.night",
+        import.meta.url
+      ),
+      { name: `Wallpaper (Vanta Clouds Night)${info ? ` [${info}]` : ""}` }
     ),
   VANTAWAVES: (info?: string): Worker =>
     new Worker(
