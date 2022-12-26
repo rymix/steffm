@@ -6,7 +6,10 @@ const libs = ["/System/Tartan/plaid.js"];
 
 declare global {
   interface Window {
-    Tartan: (div: HTMLDivElement, config: typeof tartanConfig) => Promise<void>;
+    Tartan?: (
+      div: HTMLDivElement,
+      config: typeof tartanConfig
+    ) => Promise<void>;
   }
 }
 

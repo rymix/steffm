@@ -16,16 +16,6 @@ const WallpaperSwitcher = (): JSX.Element => {
 
   const wallpapers: Wallpaper[] = [
     {
-      label: "Astronomy Picture of the Day",
-      preview: "System/WallpaperPreviews/win95.jpg",
-      value: "APOD",
-    },
-    {
-      label: "Coastal Landscape",
-      preview: "System/WallpaperPreviews/win98.jpg",
-      value: "COSTAL_LANDSCAPE",
-    },
-    {
       label: "Matrix (2D)",
       preview: "System/WallpaperPreviews/win95.jpg",
       value: "MATRIX 2D",
@@ -55,11 +45,6 @@ const WallpaperSwitcher = (): JSX.Element => {
       preview: "System/WallpaperPreviews/win98.jpg",
       value: "VANTACLOUDSCYCLE",
     },
-    {
-      label: "Vanta Waves",
-      preview: "System/WallpaperPreviews/win95.jpg",
-      value: "VANTAWAVES",
-    },
   ];
 
   const handleOptionChange = (value: string): void => {
@@ -69,6 +54,15 @@ const WallpaperSwitcher = (): JSX.Element => {
     );
     const preview = wallpaper?.preview ?? "";
     setPreviewImage(preview);
+  };
+
+  const destroyAllWallpapers = (): void => {
+    console.log("destroy");
+    delete window.Apod;
+    delete window.Matrix;
+    delete window.Tartan;
+    delete window.Apod;
+    delete window.Apod;
   };
 
   return (
@@ -94,6 +88,9 @@ const WallpaperSwitcher = (): JSX.Element => {
           OK
         </button>
         <button type="button">Cancel</button>
+        <button onClick={destroyAllWallpapers} type="button">
+          Destroy
+        </button>
       </div>
     </StyledWallpaperSwitcher>
   );

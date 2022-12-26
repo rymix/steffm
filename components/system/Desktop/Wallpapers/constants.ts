@@ -16,24 +16,12 @@ export const WALLPAPER_PATHS: Record<
   string,
   () => Promise<{ default: WallpaperFunc }>
 > = {
-  APOD: () => import("components/system/Desktop/Wallpapers/APOD"),
-  COASTAL_LANDSCAPE: () =>
-    import("components/system/Desktop/Wallpapers/ShaderToy/CoastalLandscape"),
   MATRIX: () => import("components/system/Desktop/Wallpapers/Matrix"),
   TARTAN: () => import("components/system/Desktop/Wallpapers/Tartan"),
   VANTACLOUDS: () => import("components/system/Desktop/Wallpapers/vantaClouds"),
-  VANTAWAVES: () => import("components/system/Desktop/Wallpapers/vantaWaves"),
 };
 
 export const WALLPAPER_WORKERS: Record<string, (info?: string) => Worker> = {
-  COASTAL_LANDSCAPE: (): Worker =>
-    new Worker(
-      new URL(
-        "components/system/Desktop/Wallpapers/ShaderToy/CoastalLandscape/wallpaper.worker",
-        import.meta.url
-      ),
-      { name: "Wallpaper (Coastal Landscape)" }
-    ),
   VANTACLOUDSCYCLE: (info?: string): Worker =>
     new Worker(
       new URL(
@@ -61,14 +49,6 @@ export const WALLPAPER_WORKERS: Record<string, (info?: string) => Worker> = {
         import.meta.url
       ),
       { name: `Wallpaper (Vanta Clouds Night)${info ? ` [${info}]` : ""}` }
-    ),
-  VANTAWAVES: (info?: string): Worker =>
-    new Worker(
-      new URL(
-        "components/system/Desktop/Wallpapers/vantaWaves/wallpaper.worker",
-        import.meta.url
-      ),
-      { name: `Wallpaper (Vanta Waves)${info ? ` [${info}]` : ""}` }
     ),
 };
 

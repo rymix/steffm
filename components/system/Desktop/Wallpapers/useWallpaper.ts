@@ -73,6 +73,7 @@ const useWallpaper = (
       window.WallpaperDestroy?.();
 
       if (window.OffscreenCanvas !== undefined && wallpaperWorker.current) {
+        console.log("Offscreen is true");
         const offscreen = createOffscreenCanvas(desktopRef.current);
 
         wallpaperWorker.current.postMessage(
@@ -83,12 +84,15 @@ const useWallpaper = (
         window.removeEventListener("resize", resizeListener);
         window.addEventListener("resize", resizeListener, { passive: true });
       } else if (WALLPAPER_PATHS[wallpaperName]) {
+        console.log("Direct wallpaper is true");
         WALLPAPER_PATHS[wallpaperName]().then(({ default: wallpaper }) =>
           wallpaper?.(desktopRef.current, config)
         );
       } else {
         setWallpaper("VANTACLOUDS");
       }
+
+      console.log("wallpaperName", wallpaperName);
     }
   }, [
     desktopRef,

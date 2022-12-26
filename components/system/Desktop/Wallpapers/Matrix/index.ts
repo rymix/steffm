@@ -6,7 +6,7 @@ const libs = ["/System/Matrix/js/regl/main.js"];
 
 declare global {
   interface Window {
-    Matrix: (
+    Matrix?: (
       canvas: HTMLCanvasElement,
       config: typeof matrixConfig
     ) => Promise<void>;

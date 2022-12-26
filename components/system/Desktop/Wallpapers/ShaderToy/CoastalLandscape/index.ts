@@ -2,7 +2,7 @@ import { loadFiles } from "utils/functions";
 
 declare global {
   interface Window {
-    effectInit: (canvas: HTMLCanvasElement) => void;
+    effectInit?: (canvas: HTMLCanvasElement) => void;
   }
 }
 

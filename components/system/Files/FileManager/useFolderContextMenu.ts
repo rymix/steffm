@@ -154,16 +154,6 @@ const useFolderContextMenu = (
                   label: "Background",
                   menu: [
                     {
-                      action: () => setWallpaper("APOD"),
-                      label: "APOD",
-                      toggle: wallpaperImage.startsWith("APOD"),
-                    },
-                    {
-                      action: () => setWallpaper("COASTAL_LANDSCAPE"),
-                      label: "Coastal Landscape",
-                      toggle: wallpaperImage === "COASTAL_LANDSCAPE",
-                    },
-                    {
                       action: () => setWallpaper("MATRIX 2D"),
                       label: "Matrix (2D)",
                       toggle: wallpaperImage === "MATRIX 2D",
@@ -192,15 +182,6 @@ const useFolderContextMenu = (
                       action: () => setWallpaper("VANTACLOUDSCYCLE"),
                       label: "Vanta Clouds (Day/Night Cycle)",
                       toggle: wallpaperImage.startsWith("VANTACLOUDSCYCLE"),
-                    },
-                    {
-                      action: () => setWallpaper("VANTAWAVES"),
-                      label: `Vanta Waves${
-                        wallpaperImage === "VANTAWAVES WIREFRAME"
-                          ? " (Wireframe)"
-                          : ""
-                      }`,
-                      toggle: wallpaperImage.startsWith("VANTAWAVES"),
                     },
                   ],
                 },

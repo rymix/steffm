@@ -4,7 +4,7 @@ import { jsonFetch, viewWidth } from "utils/functions";
 
 declare global {
   interface Window {
-    Apod: (div: HTMLDivElement, config: typeof apodConfig) => Promise<void>;
+    Apod?: (div: HTMLDivElement, config: typeof apodConfig) => Promise<void>;
   }
 }
 
