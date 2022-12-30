@@ -160,6 +160,13 @@ const directory: Processes = {
     singleton: true,
     title: "Mixcloud Debug",
   },
+  MixcloudIndex: {
+    Component: dynamic(() => import("components/apps/Mixcloud/LibraryçIndex")),
+    backgroundColor: "#ffffff",
+    icon: "/System/Icons/mixcloud",
+    singleton: true,
+    title: "Mixcloud Index",
+  },
   MonacoEditor: {
     Component: dynamic(() => import("components/apps/MonacoEditor")),
     backgroundColor: "#1E1E1E",
