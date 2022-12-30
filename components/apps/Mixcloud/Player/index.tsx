@@ -1,6 +1,7 @@
 import axios from "axios";
 import { mixcloudUrlify } from "components/apps/Mixcloud/functions";
 import MixCard from "components/apps/Mixcloud/MixCard";
+import MixcloudPlayer from "components/apps/Mixcloud/MixcloudPlayer";
 import StyledPlayer from "components/apps/Mixcloud/Player/StyledPlayer";
 import useMixcloudWindowSize from "components/apps/Mixcloud/useMixcloudWindowSize";
 import { useMixcloud } from "contexts/mixcloud";
@@ -9,7 +10,7 @@ import type { LegacyRef } from "react";
 import { useEffect, useRef, useState } from "react";
 import ReactPlayer from "react-player";
 
-const MixcloudPlayer = (): JSX.Element => {
+const ReactMixcloudPlayer = (): JSX.Element => {
   const {
     handleDuration,
     handleProgress,
@@ -57,6 +58,7 @@ const Player = (): JSX.Element => {
     axios("https://widget.mixcloud.com/media/js/widgetApi.js")
       .then((response) => {
         if (response.status === 200) {
+          // setPlayerSwitcher(<ReactMixcloudPlayer />);
           setPlayerSwitcher(<MixcloudPlayer />);
         } else {
           setPlayerSwitcher(<MixCard />);
