@@ -1,4 +1,5 @@
 import StyledMixCard from "components/apps/Mixcloud/MixCard/StyledMixCard";
+import MixImage from "components/apps/Mixcloud/MixImage";
 import { useMixcloud } from "contexts/mixcloud";
 import { bulletItem } from "utils/functions";
 
@@ -12,9 +13,7 @@ const MixCard = (): JSX.Element => {
           return (
             <StyledMixCard key={mixcloudKey}>
               <figcaption>
-                {coverArtSmall ? (
-                  <img alt={name} src={coverArtSmall} />
-                ) : undefined}
+                <MixImage alt={name} src={coverArtSmall || ""} />
                 <div className="title-card">
                   <h1>{name}</h1>
                   <h2>

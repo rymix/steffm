@@ -65,6 +65,8 @@ export const LIST_VIEW_ANIMATION = {
   transition: { duration: 0.15 },
 };
 
+export const MIXCLOUD_DEFAULT_CARD_IMAGE = "System/Icons/144x144/Mixcloud.png";
+
 export const TIFF_IMAGE_FORMATS = new Set([
   ".cr2",
   ".dng",

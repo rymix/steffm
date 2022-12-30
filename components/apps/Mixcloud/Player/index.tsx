@@ -1,7 +1,6 @@
-import axios from "axios";
+import axiosMixcloud from "components/apps/Mixcloud/axiosMixcloud";
 import { mixcloudUrlify } from "components/apps/Mixcloud/functions";
 import MixCard from "components/apps/Mixcloud/MixCard";
-import MixcloudPlayer from "components/apps/Mixcloud/MixcloudPlayer";
 import StyledPlayer from "components/apps/Mixcloud/Player/StyledPlayer";
 import useMixcloudWindowSize from "components/apps/Mixcloud/useMixcloudWindowSize";
 import { useMixcloud } from "contexts/mixcloud";
@@ -55,11 +54,11 @@ const Player = (): JSX.Element => {
   const [playerSwitcher, setPlayerSwitcher] = useState(<p>Loading</p>);
 
   useEffect(() => {
-    axios("https://widget.mixcloud.com/media/js/widgetApi.js")
+    axiosMixcloud("/media/js/widgetApi.js")
       .then((response) => {
-        if (response.status === 200) {
-          // setPlayerSwitcher(<ReactMixcloudPlayer />);
-          setPlayerSwitcher(<MixcloudPlayer />);
+        if (response.status === 200 || response.data === null) {
+          setPlayerSwitcher(<ReactMixcloudPlayer />);
+          // setPlayerSwitcher(<MixcloudPlayer />);
         } else {
           setPlayerSwitcher(<MixCard />);
         }
