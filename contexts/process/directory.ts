@@ -161,7 +161,7 @@ const directory: Processes = {
     title: "Mixcloud Debug",
   },
   MixcloudIndex: {
-    Component: dynamic(() => import("components/apps/Mixcloud/LibraryçIndex")),
+    Component: dynamic(() => import("components/apps/Mixcloud/LibraryIndex")),
     backgroundColor: "#ffffff",
     icon: "/System/Icons/mixcloud",
     singleton: true,
