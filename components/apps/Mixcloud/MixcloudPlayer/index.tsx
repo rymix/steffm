@@ -44,7 +44,6 @@ const MixcloudPlayer = (): JSX.Element => {
 
   return (
     <StyledMixcloudPlayer>
-      <p>farts</p>
       {/* <ReactPlayer
       ref={mixcloudRef as LegacyRef<ReactPlayer>}
       className="react-player"
