@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import {
   BASE_CANVAS_SELECTOR,
   cssFit,

@@ -9,7 +9,7 @@ type MixImageProps = {
 
 const MixImage: FC<MixImageProps> = ({ alt, src }): JSX.Element => {
   const [dynamicSrc, setDynamicSrc] = useState(src);
-  const handleImageOnError = () => {
+  const handleImageOnError = (): void => {
     setDynamicSrc(MIXCLOUD_DEFAULT_CARD_IMAGE);
   };
 

@@ -5,4 +5,3 @@ const StyledMixcloudPlayer = styled.div`
 `;
 
 export default StyledMixcloudPlayer;
-

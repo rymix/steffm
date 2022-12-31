@@ -1,9 +1,18 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import StyledWallpaperSwitcher from "components/apps/WallpaperSwitcher/StyledWallpaperSwitcher";
 import { useSession } from "contexts/session";
 import { useRef, useState } from "react";
 
+const destroyAllWallpapers = (): void => {
+  delete window.Apod;
+  delete window.Matrix;
+  delete window.Tartan;
+  delete window.Apod;
+  delete window.Apod;
+};
+
 const WallpaperSwitcher = (): JSX.Element => {
-  const { setWallpaper, wallpaperImage } = useSession();
+  const { setWallpaper } = useSession();
   const previewRef = useRef<HTMLImageElement>(null);
   const [previewValue, setPreviewValue] = useState("");
   const [previewImage, setPreviewImage] = useState("");
@@ -54,15 +63,6 @@ const WallpaperSwitcher = (): JSX.Element => {
     );
     const preview = wallpaper?.preview ?? "";
     setPreviewImage(preview);
-  };
-
-  const destroyAllWallpapers = (): void => {
-    console.log("destroy");
-    delete window.Apod;
-    delete window.Matrix;
-    delete window.Tartan;
-    delete window.Apod;
-    delete window.Apod;
   };
 
   return (
