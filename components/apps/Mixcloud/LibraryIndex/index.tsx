@@ -2,19 +2,18 @@
 /* eslint-disable */
 import StyledLibraryIndex from "components/apps/Mixcloud/LibraryIndex/StyledLibraryIndex";
 import { useMixcloud } from "contexts/mixcloud";
+import LibraryItem from "./LibraryItem";
 
 const LibraryIndex = (): JSX.Element => {
   const { mixes, setMixcloudKey } = useMixcloud();
-  const farts: JSX.Element[] = [];
 
-  mixes.map(({ mixcloudKey: mixcloudKeyItem, name, tracks }) => {
-    farts.push(<dt onClick={() => setMixcloudKey(mixcloudKeyItem)}>{name}</dt>);
-    tracks.map(({ trackName }) => {
-      farts.push(<dd>{trackName}</dd>);
-    });
-  });
-
-  return <StyledLibraryIndex>{farts}</StyledLibraryIndex>;
+  return (
+    <StyledLibraryIndex>
+      {mixes.map(({ mixcloudKey: mixcloudKeyItem }) => (
+        <LibraryItem mixcloudKeyItem={mixcloudKeyItem} />
+      ))}
+    </StyledLibraryIndex>
+  );
 };
 
 export default LibraryIndex;
