@@ -10,35 +10,18 @@ const LibraryItem = (props: any): JSX.Element => {
   return (
     <StyledLibraryItem>
       {getMixByMixcloudKey(mixcloudKey).map(({ name: mixName, tracks }) => {
-        return tracks.map(
-          (
-            {
-              artistName,
-              publisher,
-              remixArtistName,
-              sectionNumber,
-              startTime,
-              trackName,
-            },
-            index
-          ) => {
-            return (
-              <>
-                <dd>{trackName}</dd>
-                <dd>{artistName}</dd>
-              </>
-              // <TracklistItem
-              //   key={sectionNumber}
-              //   artistName={artistName}
-              //   progressThroughCurrentTrack={0}
-              //   publisher={publisher}
-              //   remixArtistName={remixArtistName}
-              //   sectionNumber={sectionNumber}
-              //   startTime={startTime}
-              //   trackName={trackName}
-              // />
-            );
-          }
+        return (
+          <>
+            <dt>{mixName}</dt>
+            {tracks.map(({ artistName, trackName }, index) => {
+              return (
+                <>
+                  <dd>{trackName}</dd>
+                  <dd>{artistName}</dd>
+                </>
+              );
+            })}
+          </>
         );
       })}
     </StyledLibraryItem>

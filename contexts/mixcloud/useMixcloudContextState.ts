@@ -27,7 +27,6 @@ export type MixcloudContextState = {
   duration: number;
   getMixByMixcloudKey: (lookupMixcloudKey: string) => Mix[];
   getMixesBySearchTerm: (searchTerm: string) => Mix[];
-  getTracksByMixcloudKey: (lookupMixcloudKey: string) => Mix | undefined;
   getTracksBySearchTerm: (searchTerm: string) => Mix[];
   handleDuration: (newDuration: number) => void;
   handlePlayPauseToggle: () => void;
@@ -155,9 +154,6 @@ const useMixcloudContextState = (): MixcloudContextState => {
 
   const getMixesBySearchTerm = (searchTerm: string): Mix[] =>
     mixes.filter((mix) => mix.name.includes(searchTerm));
-
-  const getTracksByMixcloudKey = (lookupMixcloudKey: string): Mix =>
-    mixes.find((mix) => mix.mixcloudKey === lookupMixcloudKey);
 
   const getTracksBySearchTerm = (searchTerm: string): Mix[] =>
     mixes.filter((mix) => mix.name.includes(searchTerm));
@@ -334,7 +330,6 @@ const useMixcloudContextState = (): MixcloudContextState => {
     duration,
     getMixByMixcloudKey,
     getMixesBySearchTerm,
-    getTracksByMixcloudKey,
     getTracksBySearchTerm,
     handleDuration,
     handlePlayPauseToggle,
